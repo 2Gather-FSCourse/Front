@@ -12,9 +12,9 @@ const App = () => {
 
     const getUser = async () => {
         try{
-            const url = `http:localhost:3000/users/login/success`;
+            const url = `http://localhost:3000/users/login/success`;
             const { data } = await axios.get(url);
-            setUser(data.user.json);
+            setUser(data.user);
         } catch(err){
             console.log(err)
         }

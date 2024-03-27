@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Signup(){
     const googleAuth = () => {
-        window.open(`http:localhost:3000/users/google/callback`, "_self");
+        window.open(`http://localhost:3000/users/google/callback`, "_self");
     };
     return(
         <div>
