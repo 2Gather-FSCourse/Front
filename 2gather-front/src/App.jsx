@@ -13,8 +13,11 @@ const App = () => {
     const getUser = async () => {
         try{
             const url = `http://localhost:3000/users/login/success`;
-            const { data } = await axios.get(url);
-            setUser(data.user);
+           await axios.get(url)
+               .then(response => {
+                   setUser(response.data);
+               })
+               .catch(err => console.log(err));
         } catch(err){
             console.log(err)
         }
