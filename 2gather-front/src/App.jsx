@@ -14,7 +14,7 @@ const App = () => {
 
     const getUser = async () => {
         const user = await authnicateUser();
-        console.log(user);
+        // console.log(user);
         setUser(user);
     };
 
