@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="starting to work on campaigns list &#10;added api requests">
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.styled.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/HomeImageCard/HomeImageCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/HomeImageCard/HomeImageCard.styled.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/BreadCrumbs/BreadCrumbs.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="starting to work on campaigns list &#10;added api requests" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +43,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "rony-trying-her-best",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/ronyzrihen/Documents/shenkar/Third_year/intellij/assignments/2gether/fsFinal_2gether_front",
     "node.js.detected.package.eslint": "true",

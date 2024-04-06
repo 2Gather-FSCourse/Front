@@ -3,6 +3,6 @@ import {ButtonStyled} from "./Button.styled.jsx";
 
 export const Button = ({text, onClick, isEmpty}) => {
     return (
-        <ButtonStyled onClick={onClick}>{text}</ButtonStyled>
+        <ButtonStyled onClick={onClick} isEmpty={isEmpty}>{text}</ButtonStyled>
     );
 }
