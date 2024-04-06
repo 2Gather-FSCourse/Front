@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { authenticate } from '../../APIs/users.api';
+import { LoginContainer, LoginButton, ButtonText, LoginHeading, LoginPage, Footer } from './Login.style';
 
 
 function Login(){
@@ -8,30 +8,17 @@ function Login(){
         window.open(`http://localhost:3000/users/google/callback`, "_self");
     };
 
-
-    //
-    // const navigate = (url) => {
-    //     window.location.href = url;
-    // }
-
-    // const auth = async () => {
-    // const res = await  fetch('http://localhost:3000/users/google/verify', {
-    //     method: 'post'});
-    //     const data = authenticate();
-    //     console.log(data);
-    // navigate(data.url);
-    // }
     return(
-        <div>
-            <h1>Login</h1>
-            <div>
-                <button onClick={googleAuth}><span>Google</span></button>
-                {/*<button onClick={auth}><span>Google</span></button>*/}
-            </div>
+        <LoginPage>
+            <LoginContainer>
+            <LoginHeading>Login into your account</LoginHeading>
+                <LoginButton onClick={googleAuth}><ButtonText>Google</ButtonText></LoginButton>
             <div>
                 <Link to="/signup">Register</Link>
             </div>
-        </div>
+            </LoginContainer>
+            <Footer></Footer>
+        </LoginPage>
     );
 }
 
