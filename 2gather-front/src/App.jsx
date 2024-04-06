@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Navigate, Route, Routes} from 'react-router-dom'
+import {json, Navigate, Route, Routes} from 'react-router-dom'
 import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Signup from "./pages/Signup/Signup.jsx";
@@ -7,20 +7,29 @@ import Signup from "./pages/Signup/Signup.jsx";
 import './App.css'
 import Header from './components/Header/Header';
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
-import {authnicateUser} from './APIs/users.api.jsx';
+import {authenticateUser} from './APIs/users.api.jsx';
 
 const App = () => {
     const [user, setUser] = useState(null);
 
-    const getUser = async () => {
-        const user = await authnicateUser();
-        // console.log(user);
-        setUser(user);
-    };
 
     useEffect(() => {
-        getUser().then(() => console.log("User Authenticated"));
+        fetchUser();
     }, []);
+
+    const fetchUser = async () => {
+        try{
+            const res = await authenticateUser();
+            if(res.status === 200){
+                setUser(res.data.user);
+            }else{
+                setUser(null);
+                console.log(res.data.message);
+            }
+        } catch (error){
+            console.log(error);
+        }
+    }
 
     return (
         <div className="App">
