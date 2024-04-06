@@ -1,9 +1,9 @@
 import React from 'react';
 import {CircleContainer} from './Circle.style';
 
-const Circle = ({color, size, opacity}) => {
+const Circle = ({color, width, height, opacity, top, right, bottom, left}) => {
     return (
-        <CircleContainer color={color} size={size} opacity={opacity} />
+        <CircleContainer color={color} height={height} width={width} opacity={opacity} top={top} right={right} bottom={bottom} left={left} />
     );
 }
 export default Circle;

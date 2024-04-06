@@ -1,21 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LoginContainer, LoginButton, ButtonText, LoginHeading, LoginPage, Footer } from './Login.style';
 
 
 function Login(){
     const googleAuth = () => {
         window.open(`http://localhost:3000/users/google/callback`, "_self");
     };
+
     return(
-        <div>
-            <h1>Login</h1>
-            <div>
-                <button onClick={googleAuth}><span>Google</span></button>
-            </div>
+        <LoginPage>
+            <LoginContainer>
+            <LoginHeading>Login into your account</LoginHeading>
+                <LoginButton onClick={googleAuth}><ButtonText>Google</ButtonText></LoginButton>
             <div>
                 <Link to="/signup">Register</Link>
             </div>
-        </div>
+            </LoginContainer>
+            <Footer></Footer>
+        </LoginPage>
     );
 }
 
