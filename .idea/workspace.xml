@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/fsFinal_2gether_front.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/Campaign/Campaign.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" afterDir="false" />
+    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="starting to work on campaigns list &#10;added api requests">
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.styled.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/HomeImageCard/HomeImageCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/HomeImageCard/HomeImageCard.styled.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.styled.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/donations.apis.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2gather-front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/BreadCrumbs/BreadCrumbs.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="JSX File" />
       </list>
     </option>
@@ -55,7 +55,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "rony-trying-her-best",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/מורן/OneDrive/Desktop/Dev/3rd year/Fullstack/FinalProject/Front",
+    "last_opened_file_path": "/Users/ronyzrihen/Documents/shenkar/Third_year/intellij/assignments/2gether/fsFinal_2gether_front",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -65,6 +65,13 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/2gather-front" />
+      <recent name="$PROJECT_DIR$/2gather-front/src/Public/images" />
+      <recent name="$PROJECT_DIR$/2gather-front/src/Public" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/2gather-front/package.json" />
@@ -91,7 +98,19 @@
       <option name="presentableId" value="Default" />
       <updated>1711546591251</updated>
       <workItem from="1711546592372" duration="159000" />
+      <workItem from="1711999219171" duration="1797000" />
+      <workItem from="1712401898494" duration="57000" />
+      <workItem from="1712402001339" duration="18119000" />
     </task>
+    <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
+      <option name="closed" value="true" />
+      <created>1711651326062</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711651326062</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,5 +126,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="starting to work on campaigns list &#10;added api requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting to work on campaigns list &#10;added api requests" />
   </component>
 </project>
