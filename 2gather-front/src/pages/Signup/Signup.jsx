@@ -9,7 +9,7 @@ function Signup(){
         <div>
             <h1>Sign Up</h1>
             <div>
-                <button onClick={googleAuth}><span>Google</span></button>
+                <button onClick={googleAuth}><span>Signup with Google</span></button>
             </div>
             <div>
                 <Link to="/login">Already signed?</Link>

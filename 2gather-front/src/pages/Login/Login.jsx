@@ -12,7 +12,7 @@ function Login(){
         <LoginPage>
             <LoginContainer>
             <LoginHeading>Login into your account</LoginHeading>
-                <LoginButton onClick={googleAuth}><ButtonText>Google</ButtonText></LoginButton>
+                <LoginButton onClick={googleAuth}><ButtonText>Login with Google</ButtonText></LoginButton>
             <div>
                 <Link to="/signup">Register</Link>
             </div>
