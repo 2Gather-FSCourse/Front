@@ -1,10 +1,10 @@
 import React from 'react';
-import { PageTitleContainer, PageTitleStyle } from '../../components/PageTitle/PageTitle.style';
+import { PageTitleContainer, PageTitleStyled } from './PageTitle.styled.js';
 
 const PageTitle = ({title}) => {
     return (
         <PageTitleContainer>
-            <PageTitleStyle>{title}</PageTitleStyle>
+            <PageTitleStyled>{title}</PageTitleStyled>
         </PageTitleContainer>
     );
 }

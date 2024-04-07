@@ -12,7 +12,8 @@ export const ButtonStyled = styled.button`
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
+    transition-duration: 0.4s;
     &:hover {
         background-color: ${(props) => (props.isEmpty ? '#ADD8E6' : '#FFFFFF')};
         border: ${(props) => (props.isEmpty ? '2px solid #FFFFFF' : '2px solid #ADD8E6')};

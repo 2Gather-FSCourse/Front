@@ -7,7 +7,7 @@ export const PageTitleContainer = styled.div`
     width: 100%;
 `;
 
-export const PageTitleStyle = styled.h1`
+export const PageTitleStyled = styled.h1`
     font-size: 1.8em;
     font-weight: 500;
 `;
