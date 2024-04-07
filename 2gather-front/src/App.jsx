@@ -6,6 +6,7 @@ import Signup from "./pages/Signup/Signup.jsx";
 // import axios from "axios";
 import './App.css'
 import Header from './components/Header/Header';
+import BreadCrumbs from "./components/BreadCrumbs/BreadCrumbs.jsx";
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import {authenticateUser} from './APIs/users.api.jsx';
 
@@ -36,7 +37,8 @@ const App = () => {
             <Header/>
             <Routes>
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
-                <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
+                <Route exact path="/" element={<Home/>}/>
+                {/*<Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>*/}
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>
                 <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup/>}/>
             </Routes>
