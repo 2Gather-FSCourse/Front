@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="starting to work on campaigns list &#10;added api requests" />
+    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="starting to work on campaigns list &#10;added api requests">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.styled.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.styled.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/HomeImageCard/HomeImageCard.styled.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/HomeImageCard/HomeImageCard.styled.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.styled.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,14 +51,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "rony-trying-her-best",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/ronyzrihen/Documents/shenkar/Third_year/intellij/assignments/2gether/fsFinal_2gether_front",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
     "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -91,6 +102,7 @@
       <workItem from="1711999219171" duration="1797000" />
       <workItem from="1712401898494" duration="57000" />
       <workItem from="1712402001339" duration="18119000" />
+      <workItem from="1712482839782" duration="20265000" />
     </task>
     <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
       <option name="closed" value="true" />
@@ -120,5 +132,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="starting to work on campaigns list &#10;added api requests" />
     <option name="LAST_COMMIT_MESSAGE" value="starting to work on campaigns list &#10;added api requests" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
