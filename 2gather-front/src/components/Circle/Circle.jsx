@@ -1,5 +1,5 @@
 import React from 'react';
-import {CircleContainer} from './Circle.style';
+import {CircleContainer} from './Circle.styled.js';
 
 const Circle = ({color, width, height, opacity, top, right, bottom, left}) => {
     return (

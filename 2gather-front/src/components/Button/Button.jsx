@@ -6,3 +6,5 @@ export const Button = ({text, onClick, isEmpty}) => {
         <ButtonStyled onClick={onClick} isEmpty={isEmpty}>{text}</ButtonStyled>
     );
 }
+
+export default Button;

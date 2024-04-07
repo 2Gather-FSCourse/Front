@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="starting to work on campaigns list &#10;added api requests" />
+    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="starting to work on campaigns list &#10;added api requests">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/BarPrecentage/BarPercentage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/BarPrecentage/BarPercentage.styled.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Circle/Circle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Circle/Circle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Circle/Circle.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Circle/Circle.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Header/Header.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Header/Header.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Navbar/Navbar.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Navbar/Navbar.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/PageTitle/PageTitle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/PageTitle/PageTitle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/PageTitle/PageTitle.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/PageTitle/PageTitle.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -28,6 +45,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -43,14 +63,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "adi-on-edge",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/ronyzrihen/Documents/shenkar/Third_year/intellij/assignments/2gether/fsFinal_2gether_front",
+    "last_opened_file_path": "C:/Adi/Shenkar/FullStack/2GatherFinalProject/Front",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
+    "npm.dev.executor": "Debug",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -91,6 +112,8 @@
       <workItem from="1711999219171" duration="1797000" />
       <workItem from="1712401898494" duration="57000" />
       <workItem from="1712402001339" duration="18119000" />
+      <workItem from="1712482849986" duration="998000" />
+      <workItem from="1712483885262" duration="4832000" />
     </task>
     <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
       <option name="closed" value="true" />
