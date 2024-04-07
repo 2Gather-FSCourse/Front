@@ -37,7 +37,7 @@ const App = () => {
             <Header/>
             <Routes>
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
-                <Route exact path="/" element={<Home/>}/>
+                {/*<Route exact path="/" element={<Home/>}/>*/}
                 {/*<Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>*/}
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>
                 <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup/>}/>
