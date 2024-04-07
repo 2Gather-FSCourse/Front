@@ -12,5 +12,9 @@ export const createUser = async (user) => {
     return await axios.post(usersURL, user);
 }
 
+export const LoginUser = async (user) => {
+    return await axios.post(`${usersURL}/login`, user);
+}
+
 
 

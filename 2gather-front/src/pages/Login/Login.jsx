@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LoginContainer, LoginButton, ButtonText, LoginHeading, LoginPage, Footer } from './Login.style';
+import LoginForm from './LoginForm.jsx'
 
 
-function Login(){
+function Login(props){
+    const setUser = props;
     const googleAuth = () => {
         window.open(`http://localhost:3000/users/google/callback`, "_self");
     };
@@ -17,7 +19,10 @@ function Login(){
                 <Link to="/signup">Register</Link>
             </div>
             </LoginContainer>
-            <Footer></Footer>
+            <Footer>
+                <LoginForm setUser={setUser}/>
+
+            </Footer>
         </LoginPage>
     );
 }

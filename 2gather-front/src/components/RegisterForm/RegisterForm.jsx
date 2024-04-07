@@ -1,12 +1,8 @@
 import React from 'react'
-import {ColumnContainer, FormStyle, RowContainer, StyledSelect, FormContainer, TextFieldStyle, StyledMenuItem} from './RegisterForm.style'
-// import {FormContainer, TextFieldStyle} from './SearchForm.style';
+import {ColumnContainer, FormStyle, RowContainer, StyledSelect, FormContainer, TextFieldStyle, StyledMenuItem} from './RegisterForm.style';
 import { createUser } from '../../APIs/users.api.jsx';
-// import {ReportTitle} from "../Report/Report.style";
 import { Button } from "../Button/Button";
-import {PageContainer} from "../../pages/Signup/Signup.style.js";
 // import {Msg} from "../Msg/Msg";
-import MenuItem from '@mui/material/MenuItem';
 
 // TextFieldStyle
 const RegisterForm = (props) => {
@@ -103,13 +99,6 @@ const RegisterForm = (props) => {
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
-                            {/*<TextFieldStyle*/}
-                            {/*    id={"userType"}*/}
-                            {/*    label="User Type"*/}
-                            {/*    multiline*/}
-                            {/*    width={"100%"}*/}
-                            {/*    onChange={(e) => handleForm(e)}*/}
-                            {/*/>*/}
                             <StyledSelect
                                 id={"userType"}
                                 label="Type"
@@ -121,13 +110,11 @@ const RegisterForm = (props) => {
                                     id={"userType"}
                                     value={"Donor"}
                                     width="100%"
-                                    // onChange={(e) => handleForm(e)}
                                 >Donor</StyledMenuItem>
                                 <StyledMenuItem
                                     id={"userType"}
                                     value={"Organization"}
                                     width="100%"
-                                    // onChange={(e) => handleForm(e)}
                                 >Organization</StyledMenuItem>
                             </StyledSelect>
                         </RowContainer>
