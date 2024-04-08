@@ -1,12 +1,13 @@
 import React from 'react'
-import {ColumnContainer, FormStyle, RowContainer, StyledSelect, FormContainer, TextFieldStyle, StyledMenuItem} from './RegisterForm.style';
+import {ColumnContainer, FormStyle, RowContainer, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
 import { createUser } from '../../APIs/users.api.jsx';
 import { Button } from "../Button/Button";
+import TextInput from "../TextInput/TextInput";
 // import {Msg} from "../Msg/Msg";
 
 // TextFieldStyle
 const RegisterForm = (props) => {
-// , message, setMessage, createReport, setIsError
+// , message, setMessage, setIsError
     const { formMod } = props
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
@@ -26,7 +27,7 @@ const RegisterForm = (props) => {
 
     const handleSubmit = async (e, formData) => {
         e.preventDefault();
-        if (Object.keys(formData).length < 12) {
+        if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
             // setMessage("Please fill in all the fields");
             return;
         }
@@ -60,41 +61,46 @@ const RegisterForm = (props) => {
                 <FormStyle onSubmit={(e) => handleSubmit(e, userData)}>
                     <ColumnContainer>
                         <RowContainer>
-                        <TextFieldStyle
+                        <TextInput
                             id={"name"}
                             label="Full Name"
+                            type={"text"}
                             multiline
-                            width={"47%"}
+                            width={"100%"}
                             onChange={(e) => handleForm(e)}
                         />
-                            <TextFieldStyle
+                            <TextInput
                                 id={"age"}
+                                type={"number"}
                                 label="Age"
                                 multiline
-                                width={"47%"}
+                                width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
                             </RowContainer>
                     </ColumnContainer>
                     <ColumnContainer>
                         <RowContainer>
-                            <TextFieldStyle
+                            <TextInput
                                 id={"phone"}
                                 label="Contact Number"
+                                type={"tel"}
                                 multiline
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
-                            <TextFieldStyle
+                            <TextInput
                                 id={"email"}
                                 label="Email Address"
                                 multiline
+                                type={"email"}
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
-                            <TextFieldStyle
+                            <TextInput
                                 id={"password"}
                                 label="Password"
+                                type={"password"}
                                 multiline
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
@@ -119,7 +125,7 @@ const RegisterForm = (props) => {
                             </StyledSelect>
                         </RowContainer>
                     </ColumnContainer>
-                    <Button text={"Submit"} onClick={handleSubmit} isEmpty={true}/>
+                    <Button text={"Sign Up"} onClick={handleSubmit} isEmpty={true}/>
                 </FormStyle>
             }
         </FormContainer>

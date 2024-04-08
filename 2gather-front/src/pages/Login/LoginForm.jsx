@@ -1,5 +1,6 @@
 import React from 'react'
-import {ColumnContainer, FormStyle, RowContainer, FormContainer, TextFieldStyle} from '../../components/RegisterForm/RegisterForm.style'
+import {ColumnContainer, FormStyle, RowContainer, FormContainer} from '../../components/RegisterForm/RegisterForm.style'
+import  TextInput from '../../components/TextInput/TextInput'
 import { LoginUser } from '../../APIs/users.api.jsx';
 import { Button } from "../../components/Button/Button";
 
@@ -9,10 +10,22 @@ const LoginForm = (props) => {
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
 
+    // const handleForm = async (e) => {
+    //     const {id, value} = e.currentTarget || e.target;
+    //     const updatedFormData = {...userData};
+    //     // setMessage("");
+    //     if (value === '') {
+    //         delete updatedFormData[id];
+    //     } else {
+    //         updatedFormData[id] = value;
+    //     }
+    //     setUserData(updatedFormData);
+    // }
+
     const handleForm = async (e) => {
         const {id, value} = e.currentTarget || e.target;
-        const updatedFormData = {...userData};
-        // setMessage("");
+        // Check if userData is not null or undefined before spreading it
+        const updatedFormData = userData ? {...userData} : {};
         if (value === '') {
             delete updatedFormData[id];
         } else {
@@ -22,16 +35,16 @@ const LoginForm = (props) => {
     }
 
 
-    const login = async (e, formData) => {
+    const login = async (e, userData) => {
         e.preventDefault();
-        if (Object.keys(formData).length < 2) {
+        if (Object.keys(userData).length < 2) {
             // setMessage("Please fill in all the fields");
             return;
         }
 
         const LoginInfo={
-            email: formData.email,
-            password: formData.password,
+            email: userData.email,
+            password: userData.password,
         }
         const res = await LoginUser(LoginInfo);
         console.log(res);
@@ -50,25 +63,27 @@ const LoginForm = (props) => {
         <FormContainer>
             {!isSuccess &&
                 <FormStyle onSubmit={(e) => login(e, userData)}>
-                    <ColumnContainer>
+                    {/*<ColumnContainer>*/}
                         <RowContainer>
-                            <TextFieldStyle
+                            <TextInput
                                 id={"email"}
+                                type={"email"}
                                 label="Email Address"
                                 multiline
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
-                            <TextFieldStyle
+                            <TextInput
                                 id={"password"}
+                                type={"password"}
                                 label="Password"
                                 multiline
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
                         </RowContainer>
-                    </ColumnContainer>
-                    <Button text={"Submit"} onClick={login} isEmpty={true}/>
+                    {/*</ColumnContainer>*/}
+                    <Button text={"Login"} onClick={login} isEmpty={true}/>
                 </FormStyle>
             }
         </FormContainer>
