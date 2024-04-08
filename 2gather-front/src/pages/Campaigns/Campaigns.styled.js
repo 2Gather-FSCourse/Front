@@ -4,6 +4,7 @@ export const CampaignsStyled = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    margin: 0 1.5%;
 `;
 
 export const ContainerStyled = styled.div`
@@ -12,6 +13,7 @@ export const ContainerStyled = styled.div`
     gap: 5%;
     justify-content: center;
     margin-top: 3%;
+    align-items: center;
 `;
 
 export const ImgStyled = styled.img`
@@ -26,13 +28,12 @@ export const CampaignInfoContainer = styled.div`
     display: flex;
     flex-flow: column;
     gap: 2%;
-    margin-top: 2%;
 `;
 
 export const InfoContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
-    gap: 2%;
+    gap: 5%;
     margin-top: 5%;
 `;
 
@@ -48,15 +49,28 @@ export const GoalDonationStyle = styled.p`
     font-weight: 400;
 `;
 
-export const AboutContainer = styled.div`
-    display: flex; 
-    flex-flow: column wrap;
+export const DescriptionContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    @media (max-width: 768px) {
+        flex-flow: row wrap;
+    }
 `;
+
+export const AboutAndDonationContainer = styled.div`
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 3%;
+    min-width: 380px;
+    width: 35%;
+`;
+
 export const AboutStyled = styled.h6`
     font-size: 1em;
-    text-align: center;
+    padding: 2% 0;
 `;
 
 export const CampaignDescription = styled.p`
-
+padding: 2% 0;
 `;

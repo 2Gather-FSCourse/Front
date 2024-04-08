@@ -4,12 +4,13 @@ import Button from '../../components/Button/Button';
 import BarPercentage from '../../components/BarPrecentage/BarPercentage';
 import campaignImg from '../../assets/campaignImages/breastCancerAwareness.jpg';
 import {
-    AboutContainer,
+    AboutAndDonationContainer,
     AboutStyled,
     CampaignDescription,
     CampaignInfoContainer,
     CampaignsStyled,
     ContainerStyled,
+    DescriptionContainer,
     GoalDonationStyle,
     ImgStyled,
     InfoContainer,
@@ -39,21 +40,21 @@ const Campaigns = ({totalDonations, campaignGoal}) => {
                     </InfoContainer>
                 </CampaignInfoContainer>
             </ContainerStyled>
-            <ContainerStyled>
-                <AboutContainer>
+            <DescriptionContainer>
+                <AboutAndDonationContainer>
                     <AboutStyled>About this campaign</AboutStyled>
                     <CampaignDescription>
-                        Women's cancer awareness donations are crucial for funding research,
-                        prevention, and support for
+                        Women's cancer awareness donations are crucial for funding research, prevention, and support for
                         breast, ovarian, cervical, and uterine cancers. These contributions drive early detection,
-                        treatment
-                        advancements, and education efforts, empowering women with knowledge and resources. Support for
-                        these donations aids in the fight against these diseases, offering hope and assistance to
-                        patients
-                        and their families while promoting women's health.
+                        treatment advancements, and education efforts, empowering women with knowledge and resources.
+                        Support for these donations aids in the fight against these diseases, offering hope and
+                        assistance to patients and their families while promoting women's health.
                     </CampaignDescription>
-                </AboutContainer>
-            </ContainerStyled>
+                </AboutAndDonationContainer>
+                <AboutAndDonationContainer>
+                    <AboutStyled>Recent Donations</AboutStyled>
+                </AboutAndDonationContainer>
+            </DescriptionContainer>
         </CampaignsStyled>
     )
 }
