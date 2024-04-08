@@ -13,6 +13,9 @@ import Logout from '@mui/icons-material/Logout';
 import {Link} from "react-router-dom";
 
 const UserInHeader = () => {
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const name = user ? user.name || 'Anonymous Donor'  : 'Guest';
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -21,6 +24,10 @@ const UserInHeader = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+    }
 
     return (
         <React.Fragment>
@@ -34,7 +41,7 @@ const UserInHeader = () => {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar alt="Meep Meep" sx={{bgcolor: cyan[100], width: 45, height: 45}}
+                        <Avatar alt={name} sx={{bgcolor: cyan[100], width: 45, height: 45}}
                                 src="./../assets/icons/human.png"/>
                     </IconButton>
                 </Tooltip>
@@ -88,7 +95,7 @@ const UserInHeader = () => {
                         Settings
                     </Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
                         <Logout fontSize="small"/>
                     </ListItemIcon>

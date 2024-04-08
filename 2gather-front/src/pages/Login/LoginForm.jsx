@@ -34,7 +34,7 @@ const LoginForm = (props) => {
             const res = await LoginUser(LoginInfo);
             if (res) {
                 localStorage.setItem('user', JSON.stringify(res.data));
-                setUser(localStorage.getItem('user'));
+                setUser(JSON.parse(localStorage.getItem('user')));
                 setMessage("Logged in Successfully");
                 setIsSuccess(true);
                 setTimeout(() => { setMessage('') }, 5000);
