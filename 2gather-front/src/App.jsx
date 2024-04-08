@@ -20,17 +20,17 @@ const App = () => {
     }, []);
 
     const fetchUser = async () => {
-        try{
-            const res = await authenticateUser();
-            if(res.status === 200){
-                setUser(res.data.user);
-            }else{
-                setUser(null);
-                console.log(res.data.message);
-            }
-        } catch (error){
-            console.log(error);
-        }
+        // try{
+        //     const res = await authenticateUser();
+        //     if(res.status === 200){
+        //         setUser(res.data.user);
+        //     }else{
+        //         setUser(null);
+        //         console.log(res.data.message);
+        //     }
+        // } catch (error){
+        //     console.log(error);
+        // }
     }
 
     return (
@@ -42,6 +42,7 @@ const App = () => {
                 <Route exact path="/" element={<Home/>}/>
                 {/*<Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>*/}
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>
+                <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login setUser={setUser}/>}/>
                 <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup/>}/>
             </Routes>
         </div>

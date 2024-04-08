@@ -16,7 +16,7 @@ export const LoginButton = styled.button`
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
-    width: 6vw;
+    width: fit-content;
     cursor: pointer;
 `;
 
