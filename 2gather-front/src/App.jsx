@@ -15,8 +15,6 @@ const App = () => {
     const [message, setMessage] = useState('');
     const [isError, setIsError] = useState(false);
 
-
-
     return (
         <div className="App">
             <Header/>
