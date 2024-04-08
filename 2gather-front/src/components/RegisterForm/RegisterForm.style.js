@@ -45,7 +45,7 @@ export const FormContainer = styled.div`
 
 export const StyledSelect = muiStyled(Select)(({ width }) => ({
     '& .MuiOutlinedInput-root': {
-        color: '#26293C',
+        color: '#7793AE',
         borderRadius: '25px',
         '&:hover $notchedOutline': {
             border: '1px solid #7793AE',
@@ -55,9 +55,11 @@ export const StyledSelect = muiStyled(Select)(({ width }) => ({
         border: '1px solid #7793AE',
     },
     '& .MuiInputLabel-root': {
-        color: '#ADD8E6',
+        color: '#7793AE',
     },
+    color: '#fff',
     margin: '11.5px 0',
+    borderRadius: '25px',
     width: width || '200px',}));
 
 export const StyledMenuItem = muiStyled(MenuItem)(({ width }) => ({
@@ -72,7 +74,7 @@ export const StyledMenuItem = muiStyled(MenuItem)(({ width }) => ({
         border: '1px solid #7793AE',
     },
     '& .MuiInputLabel-root': {
-        color: '#ADD8E6',
+        color: '#7793AE',
     },
     margin: '11.5px 0',
     width: width || '200px',}));

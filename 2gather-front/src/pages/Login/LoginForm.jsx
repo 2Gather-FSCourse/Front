@@ -1,33 +1,28 @@
 import React from 'react'
-import {ColumnContainer, FormStyle, RowContainer, FormContainer} from '../../components/RegisterForm/RegisterForm.style'
+import { FormStyle, FormContainer} from '../../components/RegisterForm/RegisterForm.style'
 import  TextInput from '../../components/TextInput/TextInput'
 import { LoginUser } from '../../APIs/users.api.jsx';
 import { Button } from "../../components/Button/Button";
+import { Msg } from "../../components/Msg/Msg";
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = (props) => {
-// , message, setMessage, createReport, setIsError
-    const setUser = props;
+    const {setUser , message, setMessage , setIsError}= props;
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
-    
+    const navigate = useNavigate();
 
-    const handleForm = async (e) => {
-        const {id, value} = e.currentTarget || e.target;
-        // Check if userData is not null or undefined before spreading it
-        const updatedFormData = userData ? {...userData} : {};
-        if (value === '') {
-            delete updatedFormData[id];
-        } else {
-            updatedFormData[id] = value;
-        }
-        setUserData(updatedFormData);
+    const handleForm = (e) => {
+        const { id, value } = e.target;
+        setUserData(prevState => ({ ...prevState, [id]: value }));
     }
 
 
     const login = async (e, userData) => {
         e.preventDefault();
         if (Object.keys(userData).length < 2) {
-            // setMessage("Please fill in all the fields");
+            setMessage("Please fill in all the fields");
+            setTimeout(() => { setMessage('') }, 5000);
             return;
         }
 
@@ -35,25 +30,34 @@ const LoginForm = (props) => {
             email: userData.email,
             password: userData.password,
         }
-        const res = await LoginUser(LoginInfo);
-        console.log(res);
-        if (res) {
-            setUser(res.data.user);
-            // setMessage("Report Created Successfully");
-            setIsSuccess(true);
-            // setIsError(true);
-        } else {
-            // setMessage("Report Creation Failed");
-            setIsSuccess(false)
+        try{
+            const res = await LoginUser(LoginInfo);
+            if (res) {
+                setUser(res.data.user);
+                setMessage("Logged in Successfully");
+                setIsSuccess(true);
+                setTimeout(() => { setMessage('') }, 5000);
+                navigate('/');
+            } else {
+                setMessage("Login Failed");
+                setIsSuccess(false);
+                setIsError(true);
+                setTimeout(() => { setMessage('') }, 5000);
+            }
+        } catch (err){
+            console.log(err);
+            setMessage(err);
+            setIsSuccess(false);
+            setIsError(true);
+            setTimeout(() => { setMessage('') }, 5000);
         }
     }
 
     return (
         <FormContainer>
+            {isSuccess && message && <Msg message={message}/>}
             {!isSuccess &&
                 <FormStyle onSubmit={(e) => login(e, userData)}>
-                    {/*<ColumnContainer>*/}
-                        <RowContainer>
                             <TextInput
                                 id={"email"}
                                 type={"email"}
@@ -70,9 +74,7 @@ const LoginForm = (props) => {
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
-                        </RowContainer>
-                    {/*</ColumnContainer>*/}
-                    <Button text={"Login"} onClick={login} isEmpty={true}/>
+                    <Button text={"Login"} onClick={(e) => login(e,userData)} isEmpty={true}/>
                 </FormStyle>
             }
         </FormContainer>

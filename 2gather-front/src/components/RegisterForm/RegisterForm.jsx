@@ -1,21 +1,24 @@
 import React from 'react'
-import {ColumnContainer, FormStyle, RowContainer, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
+import {ColumnContainer, FormStyle, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
 import { createUser } from '../../APIs/users.api.jsx';
 import { Button } from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
-// import {Msg} from "../Msg/Msg";
+import {Msg} from "../Msg/Msg";
+import {useNavigate} from "react-router-dom";
 
-// TextFieldStyle
+
 const RegisterForm = (props) => {
-// , message, setMessage, setIsError
-    const { formMod } = props
+    const { formMod, message, setMessage, setIsError } = props
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
+    const navigate = useNavigate();
 
-    const handleForm = async (e) => {
-        const {id, value} = e.currentTarget || e.target;
+
+    const handleForm = (e, child) => {
+        const id = child ? child.props.id : e.currentTarget.id;
+        const value = child ? child.props.value : e.currentTarget.value;
         const updatedFormData = {...userData};
-        // setMessage("");
+        setMessage("");
         if (value === '') {
             delete updatedFormData[id];
         } else {
@@ -25,10 +28,10 @@ const RegisterForm = (props) => {
     }
 
 
-    const handleSubmit = async (e, formData) => {
+    const Register = async (e, formData) => {
         e.preventDefault();
         if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
-            // setMessage("Please fill in all the fields");
+            setMessage("Please fill All the requested fields");
             return;
         }
 
@@ -43,24 +46,24 @@ const RegisterForm = (props) => {
         const res = await createUser(user);
         console.log(res);
         if (res) {
-            // setMessage("Report Created Successfully");
+            setMessage("User Registered Successfully");
             setIsSuccess(true);
-            // setIsError(true);
+            navigate('/login');
+            setIsError(true);
         } else {
-            // setMessage("Report Creation Failed");
+            setMessage("User Registration Failed");
             setIsSuccess(false)
         }
     }
 
     return (
         <FormContainer>
-            {/*{isSuccess && message && <Msg message={message}/>}*/}
+            {isSuccess && message && <Msg message={message}/>}
             {/*{formMod === "create" && <SubTitle>Create Account</SubTitle>}*/}
             {/*{formMod === "update" && <ReportTitle>Update Report</ReportTitle>}*/}
-            {!isSuccess &&
-                <FormStyle onSubmit={(e) => handleSubmit(e, userData)}>
+            {/*{!isSuccess &&*/}
+                <FormStyle onSubmit={(e) => Register(e, userData)}>
                     <ColumnContainer>
-                        <RowContainer>
                         <TextInput
                             id={"name"}
                             label="Full Name"
@@ -77,10 +80,6 @@ const RegisterForm = (props) => {
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
-                            </RowContainer>
-                    </ColumnContainer>
-                    <ColumnContainer>
-                        <RowContainer>
                             <TextInput
                                 id={"phone"}
                                 label="Contact Number"
@@ -109,7 +108,7 @@ const RegisterForm = (props) => {
                                 id={"userType"}
                                 label="Type"
                                 value={userData.userType || ''}
-                                onChange={(e) => handleForm(e)}
+                                onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >
                                 <StyledMenuItem
@@ -123,11 +122,10 @@ const RegisterForm = (props) => {
                                     width="100%"
                                 >Organization</StyledMenuItem>
                             </StyledSelect>
-                        </RowContainer>
                     </ColumnContainer>
-                    <Button text={"Sign Up"} onClick={handleSubmit} isEmpty={true}/>
+                    <Button text={"Sign Up"} onClick={(e) =>Register(e,userData)} isEmpty={true}/>
                 </FormStyle>
-            }
+            {/*}*/}
         </FormContainer>
     )
 
