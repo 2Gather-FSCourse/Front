@@ -10,11 +10,15 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import Button from '../Button/Button.jsx';
 
 const UserInHeader = () => {
     const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
     const name = user ? user.name || 'Anonymous Donor'  : 'Guest';
+    const location = useLocation();
+    const isLoginPage = location.pathname === '/login';
+    const isSignupPage = location.pathname === '/signup';
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -30,6 +34,8 @@ const UserInHeader = () => {
     }
 
     return (
+        !isLoginPage && !isSignupPage ? (
+        user ? (
         <React.Fragment>
             <Box sx={{display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                 <Tooltip title="Account settings">
@@ -105,6 +111,8 @@ const UserInHeader = () => {
                 </MenuItem>
             </Menu>
         </React.Fragment>
+            ) : ( <Link to={"/login"}><Button text={"Login"}></Button></Link> )
+        ) : (null)
     );
 };
 
