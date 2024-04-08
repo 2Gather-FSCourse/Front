@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="starting to work on campaigns list &#10;added api requests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.styled.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.styled.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.styled.js" afterDir="false" />
     </list>
@@ -114,6 +113,9 @@
       <workItem from="1712510507798" duration="688000" />
       <workItem from="1712511640588" duration="2909000" />
       <workItem from="1712515589709" duration="2770000" />
+      <workItem from="1712571458303" duration="2139000" />
+      <workItem from="1712573822552" duration="586000" />
+      <workItem from="1712575953540" duration="716000" />
     </task>
     <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
       <option name="closed" value="true" />
