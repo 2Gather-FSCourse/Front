@@ -3,13 +3,11 @@ import {json, Navigate, Route, Routes} from 'react-router-dom'
 import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Signup from "./pages/Signup/Signup.jsx";
-// import axios from "axios";
 import './App.css'
 import Header from './components/Header/Header';
 import BreadCrumbs from "./components/BreadCrumbs/BreadCrumbs.jsx";
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import Campaigns from './pages/Campaigns/Campaigns';
-import {authenticateUser} from './APIs/users.api.jsx';
 import {Msg} from "./components/Msg/Msg";
 
 const App = () => {
@@ -18,23 +16,6 @@ const App = () => {
     const [isError, setIsError] = useState(false);
 
 
-    useEffect(() => {
-        fetchUser();
-    }, []);
-
-    const fetchUser = async () => {
-        // try{
-        //     const res = await authenticateUser();
-        //     if(res.status === 200){
-        //         setUser(res.data.user);
-        //     }else{
-        //         setUser(null);
-        //         console.log(res.data.message);
-        //     }
-        // } catch (error){
-        //     console.log(error);
-        // }
-    }
 
     return (
         <div className="App">
@@ -47,7 +28,7 @@ const App = () => {
                 <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
                 {/*<Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>*/}
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login setUser={setUser} message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
-                <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup message={message} setMessage={message}/>}/>
+                <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup message={message} setMessage={message} setIsError={setIsError}/>}/>
             </Routes>
         </div>
     );

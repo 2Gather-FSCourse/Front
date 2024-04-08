@@ -40,13 +40,14 @@ const LoginForm = (props) => {
                 navigate('/');
             } else {
                 setMessage("Login Failed");
-                setIsSuccess(false)
+                setIsSuccess(false);
                 setIsError(true);
                 setTimeout(() => { setMessage('') }, 5000);
             }
         } catch (err){
             console.log(err);
             setMessage(err);
+            setIsSuccess(false);
             setIsError(true);
             setTimeout(() => { setMessage('') }, 5000);
         }

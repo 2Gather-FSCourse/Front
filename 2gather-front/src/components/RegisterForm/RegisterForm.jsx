@@ -3,19 +3,17 @@ import {ColumnContainer, FormStyle, RowContainer, StyledSelect, FormContainer, S
 import { createUser } from '../../APIs/users.api.jsx';
 import { Button } from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
-// import {Msg} from "../Msg/Msg";
+import {Msg} from "../Msg/Msg";
 
-// TextFieldStyle
 const RegisterForm = (props) => {
-// , , setIsError
-    const { formMod, message, setMessage } = props
+    const { formMod, message, setMessage, setIsError } = props
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
 
     const handleForm = async (e) => {
         const {id, value} = e.currentTarget || e.target;
         const updatedFormData = {...userData};
-        // setMessage("");
+        setMessage("");
         if (value === '') {
             delete updatedFormData[id];
         } else {
@@ -28,7 +26,7 @@ const RegisterForm = (props) => {
     const handleSubmit = async (e, formData) => {
         e.preventDefault();
         if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
-            // setMessage("Please fill in all the fields");
+            setMessage("Please fill All the requested fields");
             return;
         }
 
@@ -43,18 +41,18 @@ const RegisterForm = (props) => {
         const res = await createUser(user);
         console.log(res);
         if (res) {
-            // setMessage("Report Created Successfully");
+            setMessage("User Registered Successfully");
             setIsSuccess(true);
-            // setIsError(true);
+            setIsError(true);
         } else {
-            // setMessage("Report Creation Failed");
+            setMessage("User Registration Failed");
             setIsSuccess(false)
         }
     }
 
     return (
         <FormContainer>
-            {/*{isSuccess && message && <Msg message={message}/>}*/}
+            {isSuccess && message && <Msg message={message}/>}
             {/*{formMod === "create" && <SubTitle>Create Account</SubTitle>}*/}
             {/*{formMod === "update" && <ReportTitle>Update Report</ReportTitle>}*/}
             {!isSuccess &&
