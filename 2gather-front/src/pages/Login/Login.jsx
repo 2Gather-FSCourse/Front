@@ -5,7 +5,7 @@ import LoginForm from './LoginForm.jsx'
 
 
 function Login(props){
-    const setUser = props;
+    const {setUser, setMessage, message, setIsError }= props;
     const googleAuth = () => {
         window.open(`http://localhost:3000/users/google/callback`, "_self");
     };
@@ -20,7 +20,7 @@ function Login(props){
             </div>
             </LoginContainer>
             <Footer>
-                <LoginForm setUser={setUser}/>
+                <LoginForm setUser={setUser} setMessage={setMessage} message={message} setIsError={setIsError}/>
 
             </Footer>
         </LoginPage>
