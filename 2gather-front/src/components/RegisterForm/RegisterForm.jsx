@@ -1,5 +1,6 @@
 import React from 'react'
 import {ColumnContainer, FormStyle, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
+import { LoginHeading } from '../../pages/Login/Login.style';
 import { createUser } from '../../APIs/users.api.jsx';
 import { Button } from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
@@ -42,6 +43,7 @@ const RegisterForm = (props) => {
             userType: formData.userType,
             age: formData.age,
             password: formData.password,
+            orgId: formData.orgId || null
         }
         const res = await createUser(user);
         console.log(res);
@@ -60,8 +62,8 @@ const RegisterForm = (props) => {
     return (
         <FormContainer>
             {isSuccess && message && <Msg message={message}/>}
-            {/*{formMod === "create" && <SubTitle>Create Account</SubTitle>}*/}
-            {/*{formMod === "update" && <ReportTitle>Update Report</ReportTitle>}*/}
+            {formMod === "create" && <LoginHeading>Create Account</LoginHeading>}
+            {formMod === "update" && <LoginHeading>Update Account</LoginHeading>}
             {/*{!isSuccess &&*/}
                 <FormStyle onSubmit={(e) => Register(e, userData)}>
                     <ColumnContainer>
@@ -76,6 +78,8 @@ const RegisterForm = (props) => {
                             <TextInput
                                 id={"age"}
                                 type={"number"}
+                                min={18}
+                                max={100}
                                 label="Age"
                                 multiline
                                 width={"100%"}
@@ -123,6 +127,16 @@ const RegisterForm = (props) => {
                                     width="100%"
                                 >Organization</StyledMenuItem>
                             </StyledSelect>
+                        {userData.userType === "Organization" ? (
+                            <TextInput
+                                id={"orgId"}
+                                type={"number"}
+                                min={1}
+                                label="Organization ID"
+                                multiline
+                                width={"100%"}
+                                onChange={(e) => handleForm(e)}
+                            /> ) : null}
                     </ColumnContainer>
                     <Button text={"Sign Up"} onClick={(e) =>Register(e,userData)} isEmpty={true}/>
                 </FormStyle>

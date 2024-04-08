@@ -17,15 +17,19 @@ import {
     ProfileName,
     UpperProfileContainer,
 } from "./Profile.styled.js";
+import {Link, Navigate, Route} from "react-router-dom";
+import Signup from "../Signup/Signup.jsx";
 
 
 const Profile = () => {
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
     return (
         <ProfileContainer>
             <UpperProfileContainer>
-                <ProfileImage></ProfileImage>
-                <ProfileName>Name Name</ProfileName>
-                <OrganizationName>Organization Name</OrganizationName>
+                <ProfileImage src={user.img}></ProfileImage>
+                <ProfileName>{user.name}</ProfileName>
+                { user.userType === 'Organization' ?  <OrganizationName>Organization Name</OrganizationName> : null }
             </UpperProfileContainer>
             <LineStyle>
                 <svg width="100%" height="1vh">
@@ -55,7 +59,13 @@ const Profile = () => {
                     </CircleContainer>
                     <ContainerTitle>Personal Information</ContainerTitle>
                     <ContainerDesc>Update and maintain your personal profile details</ContainerDesc>
-                    <Button text={'Edit'}></Button>
+                    <Link to={
+                        {
+                            pathname: "/signup",
+                            state: {formMod: "update"}
+                        }}>
+                        <Button text={'Edit'}></Button>
+                    </Link>
                 </CardContainer>
             </LowerProfileContainer>
         </ProfileContainer>
