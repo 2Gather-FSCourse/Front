@@ -33,6 +33,7 @@ const RegisterForm = (props) => {
         e.preventDefault();
         if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
             setMessage("Please fill All the requested fields");
+            setTimeout(() => { setMessage('') }, 5000);
             return;
         }
 
@@ -49,11 +50,13 @@ const RegisterForm = (props) => {
         console.log(res);
         if (res) {
             setMessage("User Registered Successfully");
+            setTimeout(() => { setMessage('') }, 5000);
             setIsSuccess(true);
             navigate('/login');
             setIsError(true);
         } else {
             setMessage("User Registration Failed");
+            setTimeout(() => { setMessage('') }, 5000);
             setIsSuccess(false)
             setIsError(true);
         }

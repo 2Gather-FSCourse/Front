@@ -12,7 +12,8 @@ import Profile from './pages/Profile/Profile';
 import {Msg} from "./components/Msg/Msg";
 
 const App = () => {
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
     const [message, setMessage] = useState('');
     const [isError, setIsError] = useState(false);
 
