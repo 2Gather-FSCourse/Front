@@ -4,23 +4,15 @@ import { createUser } from '../../APIs/users.api.jsx';
 import { Button } from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 import {Msg} from "../Msg/Msg";
+import {useNavigate} from "react-router-dom";
+
 
 const RegisterForm = (props) => {
     const { formMod, message, setMessage, setIsError } = props
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
+    const navigate = useNavigate();
 
-    // const handleForm = async (e) => {
-    //     const {id, value} = e.currentTarget || e.target;
-    //     const updatedFormData = {...userData};
-    //     setMessage("");
-    //     if (value === '') {
-    //         delete updatedFormData[id];
-    //     } else {
-    //         updatedFormData[id] = value;
-    //     }
-    //     setUserData(updatedFormData);
-    // }
 
     const handleForm = (e, child) => {
         const id = child ? child.props.id : e.currentTarget.id;
@@ -56,6 +48,7 @@ const RegisterForm = (props) => {
         if (res) {
             setMessage("User Registered Successfully");
             setIsSuccess(true);
+            navigate('/login');
             setIsError(true);
         } else {
             setMessage("User Registration Failed");
@@ -68,7 +61,7 @@ const RegisterForm = (props) => {
             {isSuccess && message && <Msg message={message}/>}
             {/*{formMod === "create" && <SubTitle>Create Account</SubTitle>}*/}
             {/*{formMod === "update" && <ReportTitle>Update Report</ReportTitle>}*/}
-            {!isSuccess &&
+            {/*{!isSuccess &&*/}
                 <FormStyle onSubmit={(e) => Register(e, userData)}>
                     <ColumnContainer>
                         <TextInput
@@ -132,7 +125,7 @@ const RegisterForm = (props) => {
                     </ColumnContainer>
                     <Button text={"Sign Up"} onClick={(e) =>Register(e,userData)} isEmpty={true}/>
                 </FormStyle>
-            }
+            {/*}*/}
         </FormContainer>
     )
 

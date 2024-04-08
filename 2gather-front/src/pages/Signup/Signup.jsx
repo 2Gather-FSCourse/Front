@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import { Button } from '../../components/Button/Button';
 import {LoginContainer, LoginHeading, PageContainer, StyledLink} from "./Signup.style.js";
+import { useNavigate } from 'react-router-dom';
+
 
 function Signup(props){
     const { message, setMessage, setIsError }= props;
