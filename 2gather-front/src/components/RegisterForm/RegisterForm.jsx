@@ -53,6 +53,7 @@ const RegisterForm = (props) => {
         } else {
             setMessage("User Registration Failed");
             setIsSuccess(false)
+            setIsError(true);
         }
     }
 

@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const googleURL = "http://localhost:3000/users/login/success";
+const googleURL = "https://server-2gwk.onrender.com/users/login/success";
 
+// const usersURL = "https://server-2gwk.onrender.com/users";
 const usersURL = "http://localhost:3000/users";
+
 
 export const authenticateUser = async () => {
     return await axios.get(googleURL);

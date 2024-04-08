@@ -33,7 +33,8 @@ const LoginForm = (props) => {
         try{
             const res = await LoginUser(LoginInfo);
             if (res) {
-                setUser(res.data.user);
+                localStorage.setItem('user', JSON.stringify(res.data));
+                setUser(localStorage.getItem('user'));
                 setMessage("Logged in Successfully");
                 setIsSuccess(true);
                 setTimeout(() => { setMessage('') }, 5000);
@@ -56,7 +57,7 @@ const LoginForm = (props) => {
     return (
         <FormContainer>
             {isSuccess && message && <Msg message={message}/>}
-            {!isSuccess &&
+            {/*{!isSuccess &&*/}
                 <FormStyle onSubmit={(e) => login(e, userData)}>
                             <TextInput
                                 id={"email"}
@@ -76,7 +77,7 @@ const LoginForm = (props) => {
                             />
                     <Button text={"Login"} onClick={(e) => login(e,userData)} isEmpty={true}/>
                 </FormStyle>
-            }
+            {/*}*/}
         </FormContainer>
     )
 
