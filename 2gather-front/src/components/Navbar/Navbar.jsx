@@ -13,7 +13,6 @@ const Navbar = () => {
             <Link to={"/appreciationWall"}>
                 <LinkStyle>Appreciation Wall</LinkStyle>
             </Link>
-
         </NavbarContainer>
     );
 }
