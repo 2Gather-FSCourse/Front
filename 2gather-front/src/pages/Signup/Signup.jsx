@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import { Button } from '../../components/Button/Button';
-import {LoginContainer, LoginHeading, PageContainer} from "./Signup.style.js";
+import {LoginContainer, LoginHeading, PageContainer, StyledLink} from "./Signup.style.js";
+import { useNavigate } from 'react-router-dom';
 
-function Signup(){
+
+function Signup(props){
+    const { message, setMessage, setIsError }= props;
     const googleAuth = () => {
         window.open(`http://localhost:3000/users/google/callback`, "_self");
     };
@@ -12,14 +15,10 @@ function Signup(){
         <PageContainer>
         <LoginContainer>
             <LoginHeading>Sign Up</LoginHeading>
-            <RegisterForm formMod={"create"}
-                          // message={message} setMessage={setMessage} createReport={createReport} setIsError={setIsError}
-            />
-            {/*<div>*/}
-            {/*</div>*/}
+            <RegisterForm formMod={"create"} message={message} setMessage={setMessage} setIsError={setIsError}/>
         </LoginContainer>
-                <Button onClick={googleAuth} text={'Sign Up with Google'} isEmpty={true}></Button>
-                <Link to="/login">Already signed?</Link>
+                {/*<Button onClick={googleAuth} text={'Sign Up with Google'} isEmpty={true}></Button>*/}
+                <StyledLink to="/login">Already signed?</StyledLink>
         </PageContainer>
     );
 }
