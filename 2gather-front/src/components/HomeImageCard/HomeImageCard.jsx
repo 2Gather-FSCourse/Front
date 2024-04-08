@@ -4,7 +4,7 @@ export  const HomeImageCard = ({image}) => {
 
     return (
         <div>
-            <HomeImageCardStyled src={`../../Public/${image}`} alt="image"  />
+            <HomeImageCardStyled src={image} alt="image"  />
         </div>
     );
 }
