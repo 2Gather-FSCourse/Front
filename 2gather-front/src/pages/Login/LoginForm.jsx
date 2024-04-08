@@ -11,18 +11,6 @@ const LoginForm = (props) => {
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
 
-
-    // const handleForm = async (e) => {
-    //     const {id, value} = e.currentTarget || e.target;
-    //     // Check if userData is not null or undefined before spreading it
-    //     const updatedFormData = userData ? {...userData} : {};
-    //     if (value === '') {
-    //         delete updatedFormData[id];
-    //     } else {
-    //         updatedFormData[id] = value;
-    //     }
-    //     setUserData(updatedFormData);
-    // }
     const handleForm = (e) => {
         const { id, value } = e.target;
         setUserData(prevState => ({ ...prevState, [id]: value }));

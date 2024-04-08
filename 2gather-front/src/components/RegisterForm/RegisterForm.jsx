@@ -7,8 +7,8 @@ import TextInput from "../TextInput/TextInput";
 
 // TextFieldStyle
 const RegisterForm = (props) => {
-// , message, setMessage, setIsError
-    const { formMod } = props
+// , , setIsError
+    const { formMod, message, setMessage } = props
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
 
@@ -125,7 +125,7 @@ const RegisterForm = (props) => {
                             </StyledSelect>
                         </RowContainer>
                     </ColumnContainer>
-                    <Button text={"Sign Up"} onClick={handleSubmit} isEmpty={true}/>
+                    <Button text={"Sign Up"} onClick={(e) =>handleSubmit(e,userData)} isEmpty={true}/>
                 </FormStyle>
             }
         </FormContainer>

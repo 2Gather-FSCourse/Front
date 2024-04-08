@@ -12,7 +12,7 @@ function Signup(){
         <PageContainer>
         <LoginContainer>
             <LoginHeading>Sign Up</LoginHeading>
-            <RegisterForm formMod={"create"}
+            <RegisterForm formMod={"create"} message={"message"} setMessage={"setMessage"}
                           // message={message} setMessage={setMessage} createReport={createReport} setIsError={setIsError}
             />
             {/*<div>*/}
