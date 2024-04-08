@@ -9,18 +9,7 @@ const LoginForm = (props) => {
     const setUser = props;
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
-
-    // const handleForm = async (e) => {
-    //     const {id, value} = e.currentTarget || e.target;
-    //     const updatedFormData = {...userData};
-    //     // setMessage("");
-    //     if (value === '') {
-    //         delete updatedFormData[id];
-    //     } else {
-    //         updatedFormData[id] = value;
-    //     }
-    //     setUserData(updatedFormData);
-    // }
+    
 
     const handleForm = async (e) => {
         const {id, value} = e.currentTarget || e.target;
