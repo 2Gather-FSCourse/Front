@@ -13,10 +13,8 @@ function Signup(){
         <LoginContainer>
             <LoginHeading>Sign Up</LoginHeading>
             <RegisterForm formMod={"create"} message={"message"} setMessage={"setMessage"}
-                          // message={message} setMessage={setMessage} createReport={createReport} setIsError={setIsError}
+                          //setIsError={setIsError}
             />
-            {/*<div>*/}
-            {/*</div>*/}
         </LoginContainer>
                 <Button onClick={googleAuth} text={'Sign Up with Google'} isEmpty={true}></Button>
                 <Link to="/login">Already signed?</Link>

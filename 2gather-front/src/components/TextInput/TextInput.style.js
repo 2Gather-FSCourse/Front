@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 
 export const TextFieldStyle = muiStyled(TextField)(({ width }) => ({
     '& .MuiOutlinedInput-root': {
-        color: '#26293C',
+        color: '#fff',
         borderRadius: '25px',
         '&:hover $notchedOutline': {
             border: '1px solid #7793AE',
@@ -13,7 +13,7 @@ export const TextFieldStyle = muiStyled(TextField)(({ width }) => ({
         border: '1px solid #7793AE',
     },
     '& .MuiInputLabel-root': {
-        color: '#ADD8E6',
+        color: '#fff',
     },
     margin: '11.5px 0',
     width: width || '200px',}));
