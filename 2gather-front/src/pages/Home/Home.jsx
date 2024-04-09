@@ -11,9 +11,9 @@ function Home(userDetails) {
     const navigator = (path) => {
         navigate(path);
     }
-    const Logout = () => {
-        window.open(`http://localhost:3000/users/logout`, "_self");
-    };
+
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
     return (
         <div>
             <HomeWrapperStyled>
@@ -32,7 +32,7 @@ function Home(userDetails) {
                         <HomeCardStyled>
                             <h3>Donate Money</h3>
                             <h1>Help Those in Need</h1>
-                            <Button text={'Donate Now!'} onClick={() => navigator('/donate')} isEmpty={true}/>
+                            <Button text={'Donate Now!'} onClick={() => { user ? navigator('/donate') : navigator('/login') }} isEmpty={true}/>
                         </HomeCardStyled>
                         <HomeCardStyled>
                             <h3>Start Campaign</h3>
