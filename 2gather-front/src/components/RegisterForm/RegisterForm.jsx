@@ -125,7 +125,8 @@ const RegisterForm = (props) => {
                             type={"text"}
                             multiline
                             width={"100%"}
-                            value={formMod === "update" ? userData.name : ''}
+                            // value={formMod === "update" ? userData.name : ''}
+                            value={userData.name}
                             onChange={(e) => handleForm(e)}
                         />
                             <TextInput
@@ -136,7 +137,8 @@ const RegisterForm = (props) => {
                                 label="Age"
                                 multiline
                                 width={"100%"}
-                                value={formMod === "update" ? userData.age : ''}
+                                // value={formMod === "update" ? userData.age : ''}
+                                value={userData.age}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -145,7 +147,8 @@ const RegisterForm = (props) => {
                                 type={"tel"}
                                 multiline
                                 width={"100%"}
-                                value={formMod === "update" ? userData.phone : ''}
+                                // value={formMod === "update" ? userData.phone : ''}
+                                value={userData.phone}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -154,7 +157,8 @@ const RegisterForm = (props) => {
                                 multiline
                                 type={"email"}
                                 width={"100%"}
-                                value={formMod === "update" ? userData.email : ''}
+                                // value={formMod === "update" ? userData.email : ''}
+                                value={userData.email}
                                 onChange={(e) => handleForm(e)}
                             />
                         { formMod === "create" ? (
@@ -170,8 +174,7 @@ const RegisterForm = (props) => {
                             <StyledSelect
                                 id={"userType"}
                                 label="Type"
-                                {...(formMod == "update" ? {value: userData.userType} : {value: userData.userType || ''})}
-
+                                value={userData.userType}
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >
@@ -190,7 +193,8 @@ const RegisterForm = (props) => {
                             <StyledSelect
                                 id={"orgId"}
                                 label="Organization"
-                                value={formMod === "update" ? userData.orgId : ''}
+                                // value={formMod === "update" ? userData.orgId : ''}
+                                value={userData.orgId}
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >
