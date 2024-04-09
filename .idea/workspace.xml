@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="first homepage layout done, &#10;added styled components to home page &#10;need to check if it's the best way to use it">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Profile/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Profile/Profile.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Profile/Profile.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/.env" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +52,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;adi-on-edge&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/Adi/Degree/Third Year/Semester A/FullStack/2Gather/Front&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -118,6 +119,7 @@
       <workItem from="1712515589709" duration="2770000" />
       <workItem from="1712605244950" duration="2295000" />
       <workItem from="1712607817908" duration="4845000" />
+      <workItem from="1712615438607" duration="4427000" />
     </task>
     <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
       <option name="closed" value="true" />
