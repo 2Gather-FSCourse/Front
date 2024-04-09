@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import {ColumnContainer, FormStyle, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
 import { LoginHeading } from '../../pages/Login/Login.style';
 import { createUser } from '../../APIs/users.api.jsx';
@@ -6,13 +6,39 @@ import { Button } from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 import {Msg} from "../Msg/Msg";
 import {useNavigate} from "react-router-dom";
+import { GetAllOrganizations } from '../../APIs/organizations.api';
 
 
 const RegisterForm = (props) => {
     const { formMod, message, setMessage, setIsError } = props
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
+    const [organizations, setOrganizations] = useState([]);
     const navigate = useNavigate();
+
+    //     const fetchOrganizations = () => {
+    //         const orgs =  GetAllOrganizations();
+    //         setOrganizations(orgs);
+    //     }
+    //
+    // useEffect(() => {
+    //     fetchOrganizations();
+    // }, []);
+
+    useEffect(() => {
+        GetAllOrganizations()
+            .then(data => {
+                console.log("data",data);
+                setOrganizations(data);
+            })
+            .catch(error => {
+                console.error('Error fetching organizations:', error);
+
+            });
+    }, []);
+
+    console.log("orgs",organizations);
+
 
 
     const handleForm = (e, child) => {
@@ -131,15 +157,24 @@ const RegisterForm = (props) => {
                                 >Organization</StyledMenuItem>
                             </StyledSelect>
                         {userData.userType === "Organization" ? (
-                            <TextInput
+                            <StyledSelect
                                 id={"orgId"}
-                                type={"number"}
-                                min={1}
-                                label="Organization ID"
-                                multiline
+                                label="Organization"
+                                value={userData.orgId || ''}
+                                onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
-                                onChange={(e) => handleForm(e)}
-                            /> ) : null}
+                            >
+                                { organizations.map((org) => (
+                                    console.log(org),
+                                    <StyledMenuItem
+                                        key={org._id}
+                                        id={"orgId"}
+                                        value={org.org_id}
+                                        width="100%"
+                                    >{org.title}</StyledMenuItem>
+                                ))}
+                            </StyledSelect>
+                            ) : null}
                     </ColumnContainer>
                     <Button text={"Sign Up"} onClick={(e) =>Register(e,userData)} isEmpty={true}/>
                 </FormStyle>
