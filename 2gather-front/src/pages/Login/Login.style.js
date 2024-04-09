@@ -7,7 +7,7 @@ export const LoginContainer = styled.div`
     align-items: center;
     background-color: #ADD8E6;
     height: 40vh;
-    width: 20vw;
+    width: 350px;
     border-radius: 10px;
     `;
 
@@ -27,9 +27,9 @@ export const ButtonText = styled.span`
 `;
 
 export const LoginHeading = styled.h1`
-    width: 15vw;
+    width: 170px;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #fff;
     padding: 10px;
 `;

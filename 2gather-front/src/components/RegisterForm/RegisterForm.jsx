@@ -16,7 +16,7 @@ const RegisterForm = (props) => {
     const [isSuccess, setIsSuccess] = React.useState(false);
     const [organizations, setOrganizations] = useState([]);
     const navigate = useNavigate();
-    
+
 
     useEffect(() => {
         GetAllOrganizations()
@@ -200,7 +200,6 @@ const RegisterForm = (props) => {
                                 width={"100%"}
                             >
                                 { organizations.map((org) => (
-                                    console.log(org),
                                     <StyledMenuItem
                                         key={org._id}
                                         id={"orgId"}
