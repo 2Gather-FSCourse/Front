@@ -1,4 +1,4 @@
-import React, { useEffect, userEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import { AppreciationWallContainer, CirclesContainer } from './AppreciationWall.style';
 import Circle from '../../components/Circle/Circle';
@@ -13,7 +13,7 @@ const AppreciationWall = () => {
             const result = await getDonations();
             let users = {};
 
-            for (const donation of result) {
+            for (const donation of result.data) {
                 if (!users[donation.userId]) {
                     users[donation.userId] = 0;
                 }
@@ -28,16 +28,19 @@ const AppreciationWall = () => {
             usersArray.sort((a, b) => b.totalDonation - a.totalDonation);
             const topFiveId = usersArray.slice(0, 5).map(user => user.userId);
 
-            for (const userId of topFiveId) {
+
+            const topFiveNames = await Promise.all(topFiveId.map(async userId => {
                 const user = await getUser(userId);
-                topFive.push(user);
-            }
-
-            setTopFive(topFive);
+                return user.data.name;
+            }));
+            setTopFive(topFiveNames);
         }
+        if (topFive.length === 0)
+            fetchTopFive();
 
-        fetchTopFive();
-    }, []);
+        console.log(topFive);
+
+    }, [topFive]);
 
 
     return (
@@ -54,11 +57,11 @@ const AppreciationWall = () => {
                 <Circle color={'#A594FF'} height={11.7} width={8.3} opacity={0.56} top={13} right={31.25}></Circle>
                 <Circle color={'#D0F5F7'} height={11.7} width={8.3} opacity={1} top={6.8} right={31.9}></Circle>
                 <Circle color={'#3DB2E2'} height={14.1} width={10} opacity={0.41} top={30} right={55}></Circle>
-                <Circle color={'#5093E7'} height={14.6} width={10.4} opacity={1} top={10} right={43}></Circle>
-                <Circle color={'#B7E2E4'} height={24.4} width={17.3} opacity={1} bottom={17} left={20}></Circle>
-                <Circle color={'#3DB2E2'} height={21.9} width={15.6} opacity={1} top={7} right={5}></Circle>
-                <Circle color={'#90A8F0'} height={25.3} width={18} opacity={1} bottom={25} left={5}></Circle>
-                <Circle color={'#242D47'} height={34.1} width={24.3} opacity={1} top={3} right={23}></Circle>
+                <Circle color={'#5093E7'} height={14.6} width={10.4} opacity={1} top={10} right={43} name={topFive[4]}></Circle>
+                <Circle color={'#B7E2E4'} height={24.4} width={17.3} opacity={1} bottom={17} left={20} name={topFive[3]}></Circle>
+                <Circle color={'#3DB2E2'} height={21.9} width={15.6} opacity={1} top={7} right={5} name={topFive[2]}></Circle>
+                <Circle color={'#90A8F0'} height={25.3} width={18} opacity={1} bottom={25} left={5} name={topFive[1]}></Circle>
+                <Circle color={'#242D47'} height={34.1} width={24.3} opacity={1} top={3} right={23} name={topFive[0]}></Circle>
             </CirclesContainer>
         </AppreciationWallContainer>
     );
