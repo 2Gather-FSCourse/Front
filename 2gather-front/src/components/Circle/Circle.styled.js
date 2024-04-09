@@ -12,4 +12,16 @@ export const CircleContainer = styled.div`
     ${props => props.right && `right: ${props.right}%;`}
     ${props => props.top && `top: ${props.top}%;`}
     ${props => props.bottom && `bottom: ${props.bottom}%;`}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+`;
+
+export const TextContainer = styled.h3`
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
 `;
