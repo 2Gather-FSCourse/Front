@@ -8,33 +8,29 @@ const Donations = () => {
 
     const [donations, setDonations] = useState([]);
     const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const userId = user.id.toString();
 
-    // useEffect(() => {
-    //     getDonationByUserId(user.id)
-    //         .then(data => {
-    //             setDonations(data.data);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching donations:', error);
-    //         });
-    // }, []);
+    useEffect(() => {
+        getDonationByUserId(userId)
+            .then(data => {
+                setDonations(data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching donations:', error);
+            });
+    }, []);
 
     return (
         <div>
         <PageHeader>Donations</PageHeader>
         <DonationsContainer>
-            {/*{donations.map((donation) => {*/}
-            {/*    return (*/}
-            {/*        <Donation key={donation.id} campaignId={donation.campaignId} amount={donation.amount} transactionDate={donation.transactionDate}></Donation>*/}
-            {/*    )*/}
-            {/*})}*/}
-        <Donation></Donation>
-            <Donation></Donation>
-            <Donation></Donation>
-            <Donation></Donation>
-            <Donation></Donation>
-            <Donation></Donation>
-            <Donation></Donation>
+            {donations.length > 0 ? (
+                donations.map((donation) => {
+                return (
+                    <Donation key={donation._id} campaignId={donation.campaignId} amount={donation.amount} transactionDate={donation.transactionDate}></Donation>
+                )
+            })) : ( <h1>No donations yet</h1>
+                )}
         </DonationsContainer>
         </div>
     )

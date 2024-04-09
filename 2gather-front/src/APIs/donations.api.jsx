@@ -10,7 +10,8 @@ const createDonation = async () => {
 };
 
 const getDonationByUserId = async (userId) => {
-    return await axios.get(`${baseURL}/donations/byUser/${userId}`);
+    return await axios.get(`${baseURL}/donations/list/${userId}` );
+
 };
 
 export {createDonation, getDonationByUserId};

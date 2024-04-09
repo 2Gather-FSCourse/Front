@@ -5,24 +5,25 @@ import { fetchCampaignById } from '../../APIs/campaigns.api';
 
 const Donation = (props) => {
     const { transactionDate, amount, campaignId } = props;
-    const [campaign, setCampaign] = useState(null);
+    const [campaign, setCampaign] = useState([]);
+    const formattedDate = new Date(transactionDate).toLocaleDateString();
 
-    // useEffect(() => {
-    //     fetchCampaignById(campaignId)
-    //         .then(data => {
-    //             setCampaign(data);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching campaign:', error);
-    //         });
-    // }, []);
+    useEffect(() => {
+        fetchCampaignById(campaignId)
+            .then(data => {
+                setCampaign(data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching campaign:', error);
+            });
+    }, []);
 
     return (
         <DonationContainer>
-        {/*<h1>{campaign.title}</h1>*/}
-        {/*<div>when: {transactionDate}</div>*/}
-        {/*<div>Amount: {amount}</div>*/}
-    </DonationContainer>
+            <h1>{campaign && campaign.title ? campaign.title : "Campaign"}</h1>
+            <div>Date: {formattedDate}</div>
+            <div>Amount: {amount}</div>
+        </DonationContainer>
     )
 }
 
