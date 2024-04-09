@@ -9,6 +9,7 @@ import BreadCrumbs from "./components/BreadCrumbs/BreadCrumbs.jsx";
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import Campaigns from './pages/Campaigns/Campaigns';
 import Profile from './pages/Profile/Profile';
+import Donations from './pages/Donations/Donations';
 import {Msg} from "./components/Msg/Msg";
 
 const App = () => {
@@ -28,7 +29,7 @@ const App = () => {
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
-
+                <Route exact path="/donations" element={<Donations/>}/>
                 <Route exact path="/signup" element={user ?
                     <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"update"}/> :
                     <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"create"} />
