@@ -13,6 +13,7 @@ import PaymentReult from "./pages/PaymentResult/PaymentResult";
 import {Msg} from "./components/Msg/Msg";
 import CampaignForm from "./pages/Campaigns/CampignForm/CampaignForm.jsx";
 import {CampaignList} from "./pages/Campaigns/CampaignsList/CampaignList.jsx";
+import Donations from "./pages/Donations/Donations.jsx";
 
 
 const App = () => {
@@ -34,7 +35,7 @@ const App = () => {
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
                 <Route path="/campaigns/form" element={<CampaignForm/>}/>
                 <Route path="/campaigns" element={<CampaignList/>}/>
-                {/* <Route exact path="/donations" element={<Donations/>}/> */}
+                 <Route exact path="/donations" element={<Donations/>}/>
                 <Route path="/profile" element={<Profile />} />
                 <Route path='/donate' element={user ? <Payment user={user} /> : <Navigate to="/login" />} />
                 <Route path='/paymentResult' element={user ? <PaymentReult user={user} /> : <Navigate to="/login" />} />
