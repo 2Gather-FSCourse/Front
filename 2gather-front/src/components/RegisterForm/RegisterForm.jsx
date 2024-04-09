@@ -1,0 +1,187 @@
+import React, { useEffect, useState} from 'react'
+import {ColumnContainer, FormStyle, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
+import { LoginHeading } from '../../pages/Login/Login.style';
+import { createUser } from '../../APIs/users.api.jsx';
+import { Button } from "../Button/Button";
+import TextInput from "../TextInput/TextInput";
+import {Msg} from "../Msg/Msg";
+import {useNavigate} from "react-router-dom";
+import { GetAllOrganizations } from '../../APIs/organizations.api';
+
+
+const RegisterForm = (props) => {
+    const { formMod, message, setMessage, setIsError } = props
+    const [userData, setUserData] = React.useState({userType: 'Donor',});
+    const [isSuccess, setIsSuccess] = React.useState(false);
+    const [organizations, setOrganizations] = useState([]);
+    const navigate = useNavigate();
+
+    //     const fetchOrganizations = () => {
+    //         const orgs =  GetAllOrganizations();
+    //         setOrganizations(orgs);
+    //     }
+    //
+    // useEffect(() => {
+    //     fetchOrganizations();
+    // }, []);
+
+    useEffect(() => {
+        GetAllOrganizations()
+            .then(data => {
+                console.log("data",data);
+                setOrganizations(data);
+            })
+            .catch(error => {
+                console.error('Error fetching organizations:', error);
+
+            });
+    }, []);
+
+    console.log("orgs",organizations);
+
+
+
+    const handleForm = (e, child) => {
+        const id = child ? child.props.id : e.currentTarget.id;
+        const value = child ? child.props.value : e.currentTarget.value;
+        const updatedFormData = {...userData};
+        setMessage("");
+        if (value === '') {
+            delete updatedFormData[id];
+        } else {
+            updatedFormData[id] = value;
+        }
+        setUserData(updatedFormData);
+    }
+
+
+    const Register = async (e, formData) => {
+        e.preventDefault();
+        if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
+            setMessage("Please fill All the requested fields");
+            setTimeout(() => { setMessage('') }, 5000);
+            return;
+        }
+
+        const user={
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            userType: formData.userType,
+            age: formData.age,
+            password: formData.password,
+            orgId: formData.orgId || null
+        }
+        const res = await createUser(user);
+        console.log(res);
+        if (res) {
+            setMessage("User Registered Successfully");
+            setTimeout(() => { setMessage('') }, 5000);
+            setIsSuccess(true);
+            navigate('/login');
+            setIsError(true);
+        } else {
+            setMessage("User Registration Failed");
+            setTimeout(() => { setMessage('') }, 5000);
+            setIsSuccess(false)
+            setIsError(true);
+        }
+    }
+
+    return (
+        <FormContainer>
+            {isSuccess && message && <Msg message={message}/>}
+            {formMod === "create" && <LoginHeading>Create Account</LoginHeading>}
+            {formMod === "update" && <LoginHeading>Update Account</LoginHeading>}
+            {/*{!isSuccess &&*/}
+                <FormStyle onSubmit={(e) => Register(e, userData)}>
+                    <ColumnContainer>
+                        <TextInput
+                            id={"name"}
+                            label="Full Name"
+                            type={"text"}
+                            multiline
+                            width={"100%"}
+                            onChange={(e) => handleForm(e)}
+                        />
+                            <TextInput
+                                id={"age"}
+                                type={"number"}
+                                min={18}
+                                max={100}
+                                label="Age"
+                                multiline
+                                width={"100%"}
+                                onChange={(e) => handleForm(e)}
+                            />
+                            <TextInput
+                                id={"phone"}
+                                label="Contact Number"
+                                type={"tel"}
+                                multiline
+                                width={"100%"}
+                                onChange={(e) => handleForm(e)}
+                            />
+                            <TextInput
+                                id={"email"}
+                                label="Email Address"
+                                multiline
+                                type={"email"}
+                                width={"100%"}
+                                onChange={(e) => handleForm(e)}
+                            />
+                            <TextInput
+                                id={"password"}
+                                label="Password"
+                                type={"password"}
+                                multiline
+                                width={"100%"}
+                                onChange={(e) => handleForm(e)}
+                            />
+                            <StyledSelect
+                                id={"userType"}
+                                label="Type"
+                                value={userData.userType || ''}
+                                onChange={(e,child) => handleForm(e,child)}
+                                width={"100%"}
+                            >
+                                <StyledMenuItem
+                                    id={"userType"}
+                                    value={"Donor"}
+                                    width="100%"
+                                >Donor</StyledMenuItem>
+                                <StyledMenuItem
+                                    id={"userType"}
+                                    value={"Organization"}
+                                    width="100%"
+                                >Organization</StyledMenuItem>
+                            </StyledSelect>
+                        {userData.userType === "Organization" ? (
+                            <StyledSelect
+                                id={"orgId"}
+                                label="Organization"
+                                value={userData.orgId || ''}
+                                onChange={(e,child) => handleForm(e,child)}
+                                width={"100%"}
+                            >
+                                { organizations.map((org) => (
+                                    console.log(org),
+                                    <StyledMenuItem
+                                        key={org._id}
+                                        id={"orgId"}
+                                        value={org.org_id}
+                                        width="100%"
+                                    >{org.title}</StyledMenuItem>
+                                ))}
+                            </StyledSelect>
+                            ) : null}
+                    </ColumnContainer>
+                    <Button text={"Sign Up"} onClick={(e) =>Register(e,userData)} isEmpty={true}/>
+                </FormStyle>
+            {/*}*/}
+        </FormContainer>
+    )
+
+}
+
+export default RegisterForm;

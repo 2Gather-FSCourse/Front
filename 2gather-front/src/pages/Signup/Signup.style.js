@@ -1,22 +1,38 @@
-import { Link } from 'react-router-dom';
-/* global process */
+import styled from "styled-components";
+import {Link} from "react-router-dom";
 
+export const LoginContainer = styled.div`
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ADD8E6;
+    border:2px solid #ADD8E6;
+    border-radius: 10px;
+    height: 39.6%;
+    width: 69%;
+    `;
 
-function Signup(){
-    const googleAuth = () => {
-        window.open(`${process.env.REACT_APP_API_URL}/users/google/callback`, "_self");
-    };
-    return(
-        <div>
-            <h1>Sign Up</h1>
-            <div>
-                <button onClick={googleAuth}><span>Google</span></button>
-            </div>
-            <div>
-                <Link to="/login">Login</Link>
-            </div>
-        </div>
-    );
-}
+export const LoginHeading = styled.h1`
+    color: #fff;
+    padding: 20px;
+    `;
 
-export default Signup;
+export const PageContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 27px;
+`;
+
+export const StyledLink = styled(Link)`
+    color: #000;
+    text-decoration: none;
+    height: fit-content;
+    margin: 10px;
+    font-size: 1.2rem;
+    &:hover {
+        color: #ADD8E6;
+    }
+`;

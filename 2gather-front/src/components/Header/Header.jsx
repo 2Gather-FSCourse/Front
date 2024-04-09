@@ -1,12 +1,21 @@
 import React from 'react';
 import Logo from "../../assets/Logo.png";
-import {HeaderStyled, HeaderContainer, LogoStyle, LineStyle} from "./Header.styled.js";
+import { Link } from 'react-router-dom';
+import UserInHeader from "../UserInHeader/UserInHeader.jsx";
+import Navbar from "../Navbar/Navbar.jsx";
+import {HeaderContainer, HeaderStyled, LineStyle, LogoNavContainer, LogoStyle} from "./Header.styled.js";
 
 const Header = () => {
     return (
         <HeaderStyled>
             <HeaderContainer>
-            <LogoStyle src={Logo} alt="logo"/>
+                <LogoNavContainer>
+                    <Link to="/">
+                        <LogoStyle src={Logo} alt="logo"/>
+                    </Link>
+                    <Navbar></Navbar>
+                </LogoNavContainer>
+                <UserInHeader></UserInHeader>
             </HeaderContainer>
             <LineStyle>
                 <svg width="95%" height="1vh">

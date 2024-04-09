@@ -8,11 +8,15 @@ export const HeaderStyled = styled.header`
 
 export const HeaderContainer = styled.div`
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-flow: row;
     margin: 1% 2.5%;
 `;
 
+export const LogoNavContainer = styled.div`
+    display: flex;
+    justify-content: flex-start;
+`;
 export const LogoStyle = styled.img`
     width: 162px;
     height: 50px;

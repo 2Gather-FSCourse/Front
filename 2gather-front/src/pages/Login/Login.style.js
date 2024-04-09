@@ -8,6 +8,7 @@ export const LoginContainer = styled.div`
     background-color: #ADD8E6;
     height: 40vh;
     width: 20vw;
+    border-radius: 10px;
     `;
 
 export const LoginButton = styled.button`
@@ -16,7 +17,7 @@ export const LoginButton = styled.button`
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
-    width: 6vw;
+    width: fit-content;
     cursor: pointer;
 `;
 
@@ -47,4 +48,17 @@ export const Footer = styled.footer`
     background-color: #ADD8E6;
     position: absolute;
     bottom: 0;
+    display: flex;
+    justify-content: center;
     `;
+
+export const StyledLink = styled(Link)`
+    color: #000;
+    text-decoration: none;
+    height: fit-content;
+    margin: 10px;
+    font-size: 1.2rem;
+    &:hover {
+        color: #ADD8E6;
+    }
+`;

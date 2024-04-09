@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LoginContainer, LoginButton, ButtonText, LoginHeading, LoginPage, Footer } from './Login.style';
+import { LoginContainer, LoginHeading, LoginPage, Footer, StyledLink } from './Login.style';
+import LoginForm from './LoginForm.jsx'
 
 
-function Login(){
+function Login(props){
+    const { setMessage, message, setIsError }= props;
     const googleAuth = () => {
         window.open(`http://localhost:3000/users/google/callback`, "_self");
     };
@@ -12,12 +14,15 @@ function Login(){
         <LoginPage>
             <LoginContainer>
             <LoginHeading>Login into your account</LoginHeading>
-                <LoginButton onClick={googleAuth}><ButtonText>Google</ButtonText></LoginButton>
+                <LoginForm setMessage={setMessage} message={message} setIsError={setIsError}/>
             <div>
-                <Link to="/signup">Register</Link>
             </div>
             </LoginContainer>
-            <Footer></Footer>
+                <StyledLink to="/signup">new here? Register!</StyledLink>
+            <Footer>
+                {/*<LoginButton onClick={googleAuth}><ButtonText>Login with Google</ButtonText></LoginButton>*/}
+
+            </Footer>
         </LoginPage>
     );
 }
