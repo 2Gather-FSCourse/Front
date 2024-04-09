@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const HomeImageCardStyled = styled.img`
-    max-width: 15vw;
+    //min-width: 15vw;
+    max-width: 215px;
     height: 314px;
     object-fit: cover;
     border-radius: 1rem;
