@@ -5,12 +5,14 @@ import Login from "./pages/Login/Login.jsx";
 import Signup from "./pages/Signup/Signup.jsx";
 import './App.css'
 import Header from './components/Header/Header';
-import BreadCrumbs from "./components/BreadCrumbs/BreadCrumbs.jsx";
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import CampaignPage from './pages/CampaignPage/CampaignPage.jsx';
 import Profile from './pages/Profile/Profile';
-import { Msg } from "./components/Msg/Msg";
 import Payment from "./pages/Payment/Payment";
+import PaymentReult from "./pages/PaymentResult/PaymentResult";
+import {Msg} from "./components/Msg/Msg";
+import CampaignForm from "./pages/Campaigns/CampignForm/CampaignForm.jsx";
+import {CampaignList} from "./pages/Campaigns/CampaignsList/CampaignList.jsx";
 
 
 const App = () => {
@@ -30,9 +32,10 @@ const App = () => {
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
                 <Route path="/campaigns/id" element={<CampaignPage user={user} campaignId={'6613e9b67398036000e77ac0'} totalDonations={1594} campaignGoal={6900}/>}/>
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
-                <Route exact path="/donations" element={<Donations/>}/>
+                {/* <Route exact path="/donations" element={<Donations/>}/> */}
                 <Route path="/profile" element={<Profile />} />
                 <Route path='/donate' element={user ? <Payment user={user} /> : <Navigate to="/login" />} />
+                <Route path='/paymentResult' element={user ? <PaymentReult user={user} /> : <Navigate to="/login" />} />
                 <Route exact path="/login" element={user ? <Navigate to="/" /> : <Login message={message} setMessage={setMessage} setIsError={setIsError} />} />
                 <Route exact path="/signup" element={user ?
                     <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"update"} /> :

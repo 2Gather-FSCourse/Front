@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="first homepage layout done, &#10;added styled components to home page &#10;need to check if it's the best way to use it">
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/CheckoutForm/CheckoutForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/stripe.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/stripe.api.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/CampaignPage/CampaignPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/CampaignPage/CampaignPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/Campaign/Campign.styled.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/CampaignsContainer/CampaignContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/CampaignsContainer/CampaignContainer.styled.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/SearchBar/SearchBar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/SearchBar/SearchBar.styled.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/CampaignsList/CampagnList.styled.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/CampaignsList/CampaignList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/BreadCrumbs/BreadCrumbs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/BreadCrumbs/BreadCrumbs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/HomeImageCard/HomeImageCard.styled.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/HomeImageCard/HomeImageCard.styled.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/TextInput/TextInput.style.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/TextInput/TextInput.style.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="rony-trying-her-best" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,25 +53,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Node.js.App.jsx.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;adi-on-edge&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Adi/Degree/Third Year/Semester A/FullStack/2Gather/Front&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\IntelliJ IDEA 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.App.jsx.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Adi/Degree/Third Year/Semester A/FullStack/2Gather/Front",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "E:\\IntelliJ IDEA 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Adi\Degree\Third Year\Semester A\FullStack\2Gather\Front\2gather-front\src\assets\campaignImages" />
@@ -86,6 +93,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
