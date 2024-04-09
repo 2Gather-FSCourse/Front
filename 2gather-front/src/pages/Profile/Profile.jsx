@@ -28,8 +28,8 @@ const Profile = () => {
 const [organization, setOrganization] = useState([]);
 const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 useEffect(() => {
-    if(user?.data.userType === 'Organization'){
-        GetOrganizationById(user?.data.orgId)
+    if(user.userType === 'Organization'){
+        GetOrganizationById(user.orgId)
             .then(data => {
                 setOrganization(data.data[0]);
             })
@@ -38,14 +38,14 @@ useEffect(() => {
 
             });
     }
-}, [user]);
+}, []);
 
     return (
         <ProfileContainer>
             <UpperProfileContainer>
-                <ProfileImage src={user?.data.img}></ProfileImage>
-                <ProfileName>{user?.data.name}</ProfileName>
-                { user?.data.userType === 'Organization' ?  <OrganizationName>{organization.title}</OrganizationName> : null }
+                <ProfileImage src={user.img}></ProfileImage>
+                <ProfileName>{user.name}</ProfileName>
+                { user.userType === 'Organization' ?  <OrganizationName>{organization.title}</OrganizationName> : null }
             </UpperProfileContainer>
             <LineStyle>
                 <svg width="100%" height="1vh">

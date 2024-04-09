@@ -15,7 +15,7 @@ import Button from '../Button/Button.jsx';
 
 const UserInHeader = () => {
     const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
-    const name = user?.data ? user?.data.name || 'Anonymous Donor'  : 'Guest';
+    const name = user ? user.name || 'Anonymous Donor'  : 'Guest';
     const location = useLocation();
     const isLoginPage = location.pathname === '/login';
     const isSignupPage = location.pathname === '/signup';
