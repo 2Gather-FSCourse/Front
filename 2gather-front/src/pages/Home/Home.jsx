@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {HomeImageCard} from '../../components/HomeImageCard/HomeImageCard';
 import {HomeCardRowStyled, InfoCardStyled, BlueSection, HomeCardStyled, HomeWrapperStyled} from './Home.styled';
 import {Button} from "../../components/Button/Button.jsx";
@@ -22,7 +22,9 @@ function Home(userDetails) {
                     <HomeImageCard image={'https://res.cloudinary.com/drnwhlaqk/image/upload/v1712577001/2Gether/assets/babyHand_j90mho.jpg'}/>
                     <InfoCardStyled>
                         <h2>Donate, fundraise and track your impact easily on our user friendly platform.</h2>
+                        <Link to={'/campaigns'}>
                         <Button text={'Get Started!'} onClick={() => navigator('/donations')} isEmpty={true}/>
+                        </Link>
 
                     </InfoCardStyled>
                     <HomeImageCard image={'images/MadaPerson.png'}/>
