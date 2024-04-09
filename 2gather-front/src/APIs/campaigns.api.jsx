@@ -23,7 +23,7 @@ const fetchCampaigns = async (id) => {
 };
 
 const updateCampaign = async (id, Campaign) => {
-  await api.put(`/damage-reports/${id}`, Campaign);
+  await api.put(`/campaigns/${id}`, Campaign);
 };
 
 export { createCampaigns, fetchCampaigns, updateCampaign, fetchCampaignById, searchCampaigns };

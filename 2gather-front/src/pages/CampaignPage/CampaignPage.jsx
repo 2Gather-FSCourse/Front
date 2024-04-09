@@ -21,25 +21,35 @@ import {
 const baseURL = "http://localhost:3000";
 
 
-const CampaignPage = ({ user, totalDonations, campaignGoal }) => {
+const CampaignPage = ({ user }) => {
     const [percentage, setPercentage] = useState(0);
     // const [campaignId, setCampaignId] = useState("");
+    const [campaign, setCampaign] = useState({});
+    const [totalDonations, setTotalDonations] = useState(0);
 
     useEffect(() => {
         setPercentage((totalDonations / campaignGoal) * 100);
     }, [totalDonations, campaignGoal]);
 
-    // useEffect(() => {
-    //     const url = window.location.href;
-    //     const campaignId = url.split("=")[1];
-    //     setCampaignId(campaignId);
-    // }, []);
+    useEffect(() => {
+        const url = window.location.href;
+        const campaignId = url.split("=")[1];
+        setCampaignId(campaignId);
 
-    // const navigate = useNavigate();
-    // const navigatorToPayment = () => {
-    //     navigate(`donate/campaignId=${campaignId}`);
-    // };
+        async function fetchCampaign(campaignId) {
+            const result = await fetchCampaignById(campaignId);
+            setCampaign(result.data);
+        }
 
+        async function getDonations(campaignId) {
+            const donations = getDonationByCampaignId(campaignId);
+            setTotalDonations(donations.data.reduce((acc, donation) => acc + donation.amount, 0));
+        }
+
+        fetchCampaign(campaignId);
+        getDonations(campaignId);
+        setPercentage(campaign.goal / totalDonations * 100)
+    }, []);
 
     const navigate = useNavigate();
 
@@ -51,16 +61,16 @@ const CampaignPage = ({ user, totalDonations, campaignGoal }) => {
     return (
         <CampaignPageStyled>
             <ContainerStyled>
-                <ImgStyled src={campaignImg} alt="Campaign Image" />
+                <ImgStyled src={campaign.campaignImage} alt="Campaign Image" />
                 <CampaignInfoContainer>
-                    <PageTitle title="Women Cancer Awareness" />
+                    <PageTitle title={campaign.title} />
                     {user && (
                         <Button text={'Donate 50₪'} onClick={navigateToDonate} />
                     )}
                     <InfoContainer>
                         <BarPercentage percentage={percentage} />
                         <TotalDonations>{totalDonations}₪</TotalDonations>
-                        <GoalDonationStyle>Pledged of {campaignGoal}₪ goal</GoalDonationStyle>
+                        <GoalDonationStyle>Pledged of {campaign.goal}₪ goal</GoalDonationStyle>
                         <span>Campaign complete</span>
                         <span>By Organization x</span>
                     </InfoContainer>
@@ -70,11 +80,7 @@ const CampaignPage = ({ user, totalDonations, campaignGoal }) => {
                 <AboutAndDonationContainer>
                     <AboutStyled>About this campaign</AboutStyled>
                     <CampaignDescription>
-                        Women's cancer awareness donations are crucial for funding research, prevention, and support for
-                        breast, ovarian, cervical, and uterine cancers. These contributions drive early detection,
-                        treatment advancements, and education efforts, empowering women with knowledge and resources.
-                        Support for these donations aids in the fight against these diseases, offering hope and
-                        assistance to patients and their families while promoting women's health.
+                        {campaign.campaignDesc}
                     </CampaignDescription>
                 </AboutAndDonationContainer>
                 <AboutAndDonationContainer>

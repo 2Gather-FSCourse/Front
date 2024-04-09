@@ -14,6 +14,11 @@ const getDonationByUserId = async (userId) => {
 };
 
 
+const getDonationByCampaignId = async (campaignId) => {
+    return await axios.get(`${baseURL}/donations/campaign/${campaignId}`);
+};
+
+
 const getDonations = async (userId) => {
     return await axios.get(`${baseURL}/donations/`);
 };
