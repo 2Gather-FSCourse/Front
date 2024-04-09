@@ -16,6 +16,7 @@ const RegisterForm = (props) => {
     const [isSuccess, setIsSuccess] = React.useState(false);
     const [organizations, setOrganizations] = useState([]);
     const navigate = useNavigate();
+    
 
     useEffect(() => {
         GetAllOrganizations()
@@ -78,7 +79,7 @@ const RegisterForm = (props) => {
 
     const Update = async (e, formData) => {
         e.preventDefault();
-        if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
+        if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age) {
             setMessage("Please fill All the requested fields");
             setTimeout(() => { setMessage('') }, 5000);
             return;
@@ -98,7 +99,7 @@ const RegisterForm = (props) => {
         if (res) {
 
             setMessage("User Updated Successfully");
-            localStorage.setItem('user', JSON.stringify(res));
+            localStorage.setItem('user', JSON.stringify(res.data));
             setTimeout(() => { setMessage('') }, 5000);
             setIsSuccess(true);
             navigate('/');
