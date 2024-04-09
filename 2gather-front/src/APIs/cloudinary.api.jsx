@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 // const cloudinaryName = process.env.REACT_APP_CLOUDINARY_NAME;
-const api = axios.create({ baseURL: 'https://api.cloudinary.com/v1_1/drnwhlaqk' });
+const api = axios.create({
+  baseURL: 'https://api.cloudinary.com/v1_1/drnwhlaqk',
+  withCredentials: false,
+});
 
 const createFormData = (type, image) => {
   const formData = new FormData();
@@ -11,8 +14,13 @@ const createFormData = (type, image) => {
 };
 const uploadCampaignImage = async (image) => {
   const formData = createFormData('campaign', image);
-  const response = await api.post('/image/upload', formData);
-  return response.data.secure_url;
+  try {
+    const response = await api.post('/image/upload', formData);
+    return response.data.secure_url;
+  } catch (error) {
+    console.error('Error uploading campaign image to Cloudinary:', error);
+    throw error;
+  }
 };
 const uploadProfileImage = async (image) => {
   const formData = createFormData('profile', image);

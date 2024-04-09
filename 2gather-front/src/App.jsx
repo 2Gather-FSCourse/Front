@@ -5,11 +5,11 @@ import Login from "./pages/Login/Login.jsx";
 import Signup from "./pages/Signup/Signup.jsx";
 import './App.css'
 import Header from './components/Header/Header';
-import BreadCrumbs from "./components/BreadCrumbs/BreadCrumbs.jsx";
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import Campaigns from './pages/Campaigns/Campaigns';
 import Profile from './pages/Profile/Profile';
 import {Msg} from "./components/Msg/Msg";
+import CampaignForm from "./pages/Campaigns/CampignForm/CampaignForm.jsx";
 
 const App = () => {
     // const [user, setUser] = useState(null);
@@ -25,9 +25,9 @@ const App = () => {
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
                 <Route path="/campaigns" element={<Campaigns totalDonations={1594} campaignGoal={6900}/>}/>
                 <Route path="/profile" element={<Profile/>}/>
-                <Route path="/campaigns/form" element={<CampaignForm/>}/>
+                <Route path="/campaigns/form" element={ !user ?  <Login message={message} setMessage={setMessage} setIsError={setIsError}/> :  <CampaignForm/> }/>
                 <Route exact path="/" element={<Home/>}/>
-                <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
+                <Route exact path="/" element={user ? <Home user={user}/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
                 {/*<Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>*/}
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
                 <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"create"}/>}/>

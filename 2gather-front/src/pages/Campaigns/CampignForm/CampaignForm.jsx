@@ -1,8 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {createCampaigns} from '../../../APIs/campaigns.api.jsx';
 import {uploadCampaignImage} from "../../../APIs/cloudinary.api.jsx";
+import axios from "axios";
+import {GetOrganizationById} from "../../../APIs/organizations.api.jsx";
 
 const CampaignForm = () => {
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
     const [formData, setFormData] = useState({
         title: '',
         campaignDesc: '',
@@ -12,6 +16,9 @@ const CampaignForm = () => {
         startDate: '',
         endDate: '',
         campaignImage: null,
+        orgId: user.orgId,
+        founderId: user.id,
+        status: 'active'
     });
 
     const handleChange = (event) => {
@@ -20,17 +27,20 @@ const CampaignForm = () => {
         setFormData({ ...formData, [name]: file ? file : value });
     };
 
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try{
+        try {
+            console.log('Form Data:', formData);
             formData.campaignImage = await uploadCampaignImage(formData.campaignImage);
-            console.log(formData.campaignImage);
+            console.log('Uploaded Image URL:', formData.campaignImage);
             const result = await createCampaigns(formData);
-        }catch (error){
-            console.error(error);
+            console.log('Create Campaign Result:', result);
+        } catch (error) {
+            console.error('Error:', error);
         }
-
     };
+
 
 
     return (
@@ -85,6 +95,8 @@ const CampaignForm = () => {
                     <label>Enter Campaign Image</label>
                     <input type="file" name="campaignImage" onChange={handleChange}/>
                 </div>
+
+
                 <button type="submit" onClick={handleSubmit}>Create Campaign</button>
             </form>
         </div>

@@ -6,11 +6,7 @@ const api = axios.create({
 
 const createCampaigns = async (campaign) => {
   console.log(campaign);
-  await api.post('/campaigns/', campaign, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  });
+  return api.post('/campaigns/', campaign);
 };
 
 const fetchCampaigns = async (id) => {
