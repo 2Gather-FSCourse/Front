@@ -11,19 +11,11 @@ import { GetAllOrganizations } from '../../APIs/organizations.api';
 
 const RegisterForm = (props) => {
     const { formMod, message, setMessage, setIsError } = props
-    const [userData, setUserData] = React.useState({userType: 'Donor',});
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const [userData, setUserData] = React.useState(user ||{ userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
     const [organizations, setOrganizations] = useState([]);
     const navigate = useNavigate();
-
-    //     const fetchOrganizations = () => {
-    //         const orgs =  GetAllOrganizations();
-    //         setOrganizations(orgs);
-    //     }
-    //
-    // useEffect(() => {
-    //     fetchOrganizations();
-    // }, []);
 
     useEffect(() => {
         GetAllOrganizations()
@@ -102,6 +94,7 @@ const RegisterForm = (props) => {
                             type={"text"}
                             multiline
                             width={"100%"}
+                            value={formMod === "update" ? userData.name : ''}
                             onChange={(e) => handleForm(e)}
                         />
                             <TextInput
@@ -112,6 +105,7 @@ const RegisterForm = (props) => {
                                 label="Age"
                                 multiline
                                 width={"100%"}
+                                value={formMod === "update" ? userData.age : ''}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -120,6 +114,7 @@ const RegisterForm = (props) => {
                                 type={"tel"}
                                 multiline
                                 width={"100%"}
+                                value={formMod === "update" ? userData.phone : ''}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -128,6 +123,7 @@ const RegisterForm = (props) => {
                                 multiline
                                 type={"email"}
                                 width={"100%"}
+                                value={formMod === "update" ? userData.email : ''}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -136,12 +132,14 @@ const RegisterForm = (props) => {
                                 type={"password"}
                                 multiline
                                 width={"100%"}
+                                value={formMod === "update" ? userData.password : ''}
                                 onChange={(e) => handleForm(e)}
                             />
                             <StyledSelect
                                 id={"userType"}
                                 label="Type"
-                                value={userData.userType || ''}
+                                {...(formMod == "update" ? {value: userData.userType} : {value: userData.userType || ''})}
+
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >
@@ -160,7 +158,9 @@ const RegisterForm = (props) => {
                             <StyledSelect
                                 id={"orgId"}
                                 label="Organization"
-                                value={userData.orgId || ''}
+                                // value={userData.orgId || ''}
+                                {...(formMod == "update" ? value={value: userData.orgId} : {value: userData.orgId || ''})}
+
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >

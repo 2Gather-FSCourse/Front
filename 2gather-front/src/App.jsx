@@ -27,9 +27,11 @@ const App = () => {
                 <Route path="/profile" element={<Profile/>}/>
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
-                {/*<Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>*/}
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
-                <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"create"}/>}/>
+                <Route exact path="/signup" element={user ?
+                    <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"update"}/> :
+                    <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"create"} />
+                }/>
             </Routes>
         </div>
     );
