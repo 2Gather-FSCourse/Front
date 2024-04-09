@@ -20,12 +20,33 @@ import {
     TotalDonations,
 } from './CampaignPage.styled.js';
 
-const CampaignPage = ({totalDonations, campaignGoal}) => {
+const CampaignPage = ({user, campaignId, totalDonations, campaignGoal}) => {
     const [percentage, setPercentage] = useState(0);
+    const [stripePromise, setStripePromise] = useState(null);
+    const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {
         setPercentage((totalDonations / campaignGoal) * 100);
     }, [totalDonations, campaignGoal]);
+
+
+    useEffect(() => {
+        fetch("/config").then(async (r) => {
+            const { publishableKey } = await r.json();
+            setStripePromise(loadStripe(publishableKey));
+        });
+    }, []);
+
+    useEffect(() => {
+        fetch("/create-payment-intent", {
+            method: "POST",
+            body: JSON.stringify({}),
+        }).then(async (result) => {
+            var { clientSecret } = await result.json();
+            setClientSecret(clientSecret);
+        });
+    }, []);
+
 
 
     const createPaymentSession = async () => {

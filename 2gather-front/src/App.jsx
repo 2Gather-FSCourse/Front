@@ -24,7 +24,7 @@ const App = () => {
             {message && <Msg msg={message} isError={isError}/>}
             <Routes>
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
-                <Route path="/campaigns/id" element={<CampaignPage totalDonations={1594} campaignGoal={6900}/>}/>
+                <Route path="/campaigns/id" element={<CampaignPage user={user} campaignId={'6613e9b67398036000e77ac0'} totalDonations={1594} campaignGoal={6900}/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>

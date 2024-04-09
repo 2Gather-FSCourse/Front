@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="first homepage layout done, &#10;added styled components to home page &#10;need to check if it's the best way to use it">
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/APIs/stripe.api.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/.env" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/2gather-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2gather-front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/CampaignPage/CampaignPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/CampaignPage/CampaignPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -124,6 +125,8 @@
       <workItem from="1712654368240" duration="1593000" />
       <workItem from="1712656344722" duration="35000" />
       <workItem from="1712656829181" duration="837000" />
+      <workItem from="1712666569902" duration="395000" />
+      <workItem from="1712667443469" duration="504000" />
     </task>
     <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
       <option name="closed" value="true" />
