@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react'
 import {ColumnContainer, FormStyle, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
 import { LoginHeading } from '../../pages/Login/Login.style';
-import { createUser } from '../../APIs/users.api.jsx';
+import { createUser, updateUser } from '../../APIs/users.api.jsx';
 import { Button } from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 import {Msg} from "../Msg/Msg";
@@ -20,7 +20,6 @@ const RegisterForm = (props) => {
     useEffect(() => {
         GetAllOrganizations()
             .then(data => {
-                console.log("data",data);
                 setOrganizations(data);
             })
             .catch(error => {
@@ -28,9 +27,6 @@ const RegisterForm = (props) => {
 
             });
     }, []);
-
-    console.log("orgs",organizations);
-
 
 
     const handleForm = (e, child) => {
@@ -80,13 +76,46 @@ const RegisterForm = (props) => {
         }
     }
 
+    const Update = async (e, formData) => {
+        e.preventDefault();
+        if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
+            setMessage("Please fill All the requested fields");
+            setTimeout(() => { setMessage('') }, 5000);
+            return;
+        }
+
+        const updatedInfo={
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            userType: formData.userType,
+            age: formData.age,
+            password: formData.password,
+            orgId: formData.orgId || null
+        }
+        const res = await updateUser(user.id, updatedInfo);
+        console.log(res);
+        if (res) {
+            setMessage("User Updated Successfully");
+            setTimeout(() => { setMessage('') }, 5000);
+            setIsSuccess(true);
+            navigate('/');
+            setIsError(true);
+        } else {
+            setMessage("User Update Failed");
+            setTimeout(() => { setMessage('') }, 5000);
+            setIsSuccess(false)
+            setIsError(true);
+        }
+    }
+
     return (
         <FormContainer>
             {isSuccess && message && <Msg message={message}/>}
             {formMod === "create" && <LoginHeading>Create Account</LoginHeading>}
             {formMod === "update" && <LoginHeading>Update Account</LoginHeading>}
             {/*{!isSuccess &&*/}
-                <FormStyle onSubmit={(e) => Register(e, userData)}>
+                <FormStyle onSubmit={(e) => {formMod ==="create" ? Register(e, userData) : Update(e,userData) }}>
                     <ColumnContainer>
                         <TextInput
                             id={"name"}
@@ -158,9 +187,7 @@ const RegisterForm = (props) => {
                             <StyledSelect
                                 id={"orgId"}
                                 label="Organization"
-                                // value={userData.orgId || ''}
-                                {...(formMod == "update" ? value={value: userData.orgId} : {value: userData.orgId || ''})}
-
+                                value={formMod === "update" ? userData.orgId : ''}
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >
@@ -176,7 +203,7 @@ const RegisterForm = (props) => {
                             </StyledSelect>
                             ) : null}
                     </ColumnContainer>
-                    <Button text={"Sign Up"} onClick={(e) =>Register(e,userData)} isEmpty={true}/>
+                    <Button text={"Sign Up"} onClick={(e) =>{ formMod === "create" ? Register(e,userData) : Update(e,userData)}} isEmpty={true}/>
                 </FormStyle>
             {/*}*/}
         </FormContainer>
