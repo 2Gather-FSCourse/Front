@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react'
 import {ColumnContainer, FormStyle, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
 import { LoginHeading } from '../../pages/Login/Login.style';
-import { createUser } from '../../APIs/users.api.jsx';
+import { createUser, updateUser } from '../../APIs/users.api.jsx';
 import { Button } from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 import {Msg} from "../Msg/Msg";
@@ -11,24 +11,16 @@ import { GetAllOrganizations } from '../../APIs/organizations.api';
 
 const RegisterForm = (props) => {
     const { formMod, message, setMessage, setIsError } = props
-    const [userData, setUserData] = React.useState({userType: 'Donor',});
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const [userData, setUserData] = React.useState(user ||{ userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
     const [organizations, setOrganizations] = useState([]);
     const navigate = useNavigate();
 
-    //     const fetchOrganizations = () => {
-    //         const orgs =  GetAllOrganizations();
-    //         setOrganizations(orgs);
-    //     }
-    //
-    // useEffect(() => {
-    //     fetchOrganizations();
-    // }, []);
 
     useEffect(() => {
         GetAllOrganizations()
             .then(data => {
-                console.log("data",data);
                 setOrganizations(data);
             })
             .catch(error => {
@@ -36,9 +28,6 @@ const RegisterForm = (props) => {
 
             });
     }, []);
-
-    console.log("orgs",organizations);
-
 
 
     const handleForm = (e, child) => {
@@ -88,13 +77,48 @@ const RegisterForm = (props) => {
         }
     }
 
+    const Update = async (e, formData) => {
+        e.preventDefault();
+        if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age) {
+            setMessage("Please fill All the requested fields");
+            setTimeout(() => { setMessage('') }, 5000);
+            return;
+        }
+
+        const updatedInfo={
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            userType: formData.userType,
+            age: formData.age,
+            password: formData.password,
+            orgId: formData.orgId || null
+        }
+        const res = await updateUser(user.id, updatedInfo);
+        console.log(res);
+        if (res) {
+
+            setMessage("User Updated Successfully");
+            localStorage.setItem('user', JSON.stringify(res.data));
+            setTimeout(() => { setMessage('') }, 5000);
+            setIsSuccess(true);
+            navigate('/');
+            setIsError(true);
+        } else {
+            setMessage("User Update Failed");
+            setTimeout(() => { setMessage('') }, 5000);
+            setIsSuccess(false)
+            setIsError(true);
+        }
+    }
+
     return (
         <FormContainer>
             {isSuccess && message && <Msg message={message}/>}
             {formMod === "create" && <LoginHeading>Create Account</LoginHeading>}
             {formMod === "update" && <LoginHeading>Update Account</LoginHeading>}
             {/*{!isSuccess &&*/}
-                <FormStyle onSubmit={(e) => Register(e, userData)}>
+                <FormStyle onSubmit={(e) => {formMod ==="create" ? Register(e, userData) : Update(e,userData) }}>
                     <ColumnContainer>
                         <TextInput
                             id={"name"}
@@ -102,6 +126,8 @@ const RegisterForm = (props) => {
                             type={"text"}
                             multiline
                             width={"100%"}
+                            // value={formMod === "update" ? userData.name : ''}
+                            value={userData.name}
                             onChange={(e) => handleForm(e)}
                         />
                             <TextInput
@@ -112,6 +138,8 @@ const RegisterForm = (props) => {
                                 label="Age"
                                 multiline
                                 width={"100%"}
+                                // value={formMod === "update" ? userData.age : ''}
+                                value={userData.age}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -120,6 +148,8 @@ const RegisterForm = (props) => {
                                 type={"tel"}
                                 multiline
                                 width={"100%"}
+                                // value={formMod === "update" ? userData.phone : ''}
+                                value={userData.phone}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -128,8 +158,11 @@ const RegisterForm = (props) => {
                                 multiline
                                 type={"email"}
                                 width={"100%"}
+                                // value={formMod === "update" ? userData.email : ''}
+                                value={userData.email}
                                 onChange={(e) => handleForm(e)}
                             />
+                        { formMod === "create" ? (
                             <TextInput
                                 id={"password"}
                                 label="Password"
@@ -138,10 +171,11 @@ const RegisterForm = (props) => {
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
+                        ) : null}
                             <StyledSelect
                                 id={"userType"}
                                 label="Type"
-                                value={userData.userType || ''}
+                                value={userData.userType}
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >
@@ -160,12 +194,12 @@ const RegisterForm = (props) => {
                             <StyledSelect
                                 id={"orgId"}
                                 label="Organization"
-                                value={userData.orgId || ''}
+                                // value={formMod === "update" ? userData.orgId : ''}
+                                value={userData.orgId}
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >
                                 { organizations.map((org) => (
-                                    console.log(org),
                                     <StyledMenuItem
                                         key={org._id}
                                         id={"orgId"}
@@ -176,7 +210,7 @@ const RegisterForm = (props) => {
                             </StyledSelect>
                             ) : null}
                     </ColumnContainer>
-                    <Button text={"Sign Up"} onClick={(e) =>Register(e,userData)} isEmpty={true}/>
+                    <Button text={formMod === "create" ? "Sign Up" : "Update"} onClick={(e) =>{ formMod === "create" ? Register(e,userData) : Update(e,userData)}} isEmpty={true}/>
                 </FormStyle>
             {/*}*/}
         </FormContainer>

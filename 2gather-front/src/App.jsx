@@ -6,10 +6,11 @@ import Signup from "./pages/Signup/Signup.jsx";
 import './App.css'
 import Header from './components/Header/Header';
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
-import Campaigns from './pages/Campaigns/Campaigns';
+import CampaignPage from './pages/CampaignPage/CampaignPage.jsx';
 import Profile from './pages/Profile/Profile';
 import {Msg} from "./components/Msg/Msg";
 import CampaignForm from "./pages/Campaigns/CampignForm/CampaignForm.jsx";
+
 
 const App = () => {
     // const [user, setUser] = useState(null);
@@ -23,14 +24,17 @@ const App = () => {
             {message && <Msg msg={message} isError={isError}/>}
             <Routes>
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
-                <Route path="/campaigns" element={<Campaigns totalDonations={1594} campaignGoal={6900}/>}/>
+                <Route path="/campaigns/id" element={<CampaignPage totalDonations={1594} campaignGoal={6900}/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/campaigns/form" element={ !user ?  <Login message={message} setMessage={setMessage} setIsError={setIsError}/> :  <CampaignForm/> }/>
                 <Route exact path="/" element={<Home/>}/>
-                <Route exact path="/" element={user ? <Home user={user}/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
-                {/*<Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>*/}
+                <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
-                <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"create"}/>}/>
+
+                <Route exact path="/signup" element={user ?
+                    <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"update"}/> :
+                    <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"create"} />
+                }/>
             </Routes>
         </div>
     );

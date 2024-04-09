@@ -1,3 +1,10 @@
 import axios from "axios";
-const api = axios.create({baseURL: "https://localhost:3001",});
 
+const baseURL = "http://localhost:3000";
+
+const createDonation = async () => {
+    return await axios.post(`${baseURL}/stripe`);
+
+};
+
+export {createDonation};

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {LineStyle} from "../../components/Header/Header.styled.js";
 import CreditCardIcon from "../../assets/icons/credit-card-profile.png";
 import DonationsIcon from "../../assets/icons/love.png";
 import UserEditIcon from "../../assets/icons/user-edit.png";
 import Button from "../../components/Button/Button";
+import { GetOrganizationById } from "../../APIs/organizations.api.jsx";
 
 import {
     CardContainer,
@@ -21,15 +22,30 @@ import {Link, Navigate, Route} from "react-router-dom";
 import Signup from "../Signup/Signup.jsx";
 
 
+
 const Profile = () => {
-    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
+const [organization, setOrganization] = useState([]);
+const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+useEffect(() => {
+    if(user.userType === 'Organization'){
+        GetOrganizationById(user.orgId)
+            .then(data => {
+                setOrganization(data.data[0]);
+            })
+            .catch(error => {
+                console.error('Error fetching organizations:', error);
+
+            });
+    }
+}, []);
 
     return (
         <ProfileContainer>
             <UpperProfileContainer>
                 <ProfileImage src={user.img}></ProfileImage>
                 <ProfileName>{user.name}</ProfileName>
-                { user.userType === 'Organization' ?  <OrganizationName>Organization Name</OrganizationName> : null }
+                { user.userType === 'Organization' ?  <OrganizationName>{organization.title}</OrganizationName> : null }
             </UpperProfileContainer>
             <LineStyle>
                 <svg width="100%" height="1vh">
@@ -60,10 +76,12 @@ const Profile = () => {
                     <ContainerTitle>Personal Information</ContainerTitle>
                     <ContainerDesc>Update and maintain your personal profile details</ContainerDesc>
                     <Link to={
-                        {
-                            pathname: "/signup",
-                            state: {formMod: "update"}
-                        }}>
+                        // {
+                            // pathname:
+                            "/signup"
+                            // state: {formMod: "update"}
+                        // }}
+                    }>
                         <Button text={'Edit'}></Button>
                     </Link>
                 </CardContainer>
