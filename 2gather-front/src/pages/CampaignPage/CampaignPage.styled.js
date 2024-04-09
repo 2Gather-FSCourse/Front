@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CampaignsStyled = styled.div`
+export const CampaignPageStyled = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;

@@ -1,62 +1,64 @@
 import React, {useEffect, useState} from 'react';
-import StripeCheckout from 'react-stripe-checkout';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import Button from '../../components/Button/Button';
 import BarPercentage from '../../components/BarPrecentage/BarPercentage';
 import campaignImg from '../../assets/campaignImages/breastCancerAwareness.jpg';
 import {createDonation} from '../../APIs/donations.api';
+import {loadStripe} from "@stripe/stripe-js";
+
 import {
     AboutAndDonationContainer,
     AboutStyled,
     CampaignDescription,
     CampaignInfoContainer,
-    CampaignsStyled,
+    CampaignPageStyled,
     ContainerStyled,
     DescriptionContainer,
     GoalDonationStyle,
     ImgStyled,
     InfoContainer,
     TotalDonations,
-} from './Campaigns.styled';
+} from './CampaignPage.styled.js';
 
-const Campaigns = ({totalDonations, campaignGoal}) => {
+const CampaignPage = ({totalDonations, campaignGoal}) => {
     const [percentage, setPercentage] = useState(0);
 
     useEffect(() => {
         setPercentage((totalDonations / campaignGoal) * 100);
     }, [totalDonations, campaignGoal]);
 
-    const [amount, setAmount] = useState(50); // Default amount
-    const [sessionId, setSessionId] = useState('');
 
     const createPaymentSession = async () => {
         try {
-            const response = await createDonation()
-            setSessionId(response.data.sessionId);
+            const stripe = await loadStripe('pk_test_51OyuRrDgt4I0wPiKSSAIhkKNlskhOycoKtuVcr5yOJMv7KcXjiJ1YV7GLT3ye90QAvxWQljx2VCmcwRFICo5KHWS00ibevbvte');
+            const response = await createDonation();
+            console.log('37');
+            const result = await stripe.redirectToCheckout({
+                sessionId: response.data.sessionId
+            });
+
+            if(result.error){
+                console.log(result.error);
+            }
+
         } catch (error) {
             console.error('Error creating payment session:', error);
         }
     };
 
-    const handlePaymentSuccess = () => {
-        // Handle success (e.g., show success message)
-        console.log('Payment successful');
-    };
-
-    const handlePaymentError = () => {
-        // Handle error (e.g., show error message)
-        console.error('Payment failed');
-    };
-
-
 
     return (
-        <CampaignsStyled>
+        <CampaignPageStyled>
             <ContainerStyled>
                 <ImgStyled src={campaignImg} alt="Campaign Image"/>
                 <CampaignInfoContainer>
                     <PageTitle title="Women Cancer Awareness"/>
-                    <Button text="Donate" onClick={createPaymentSession}/>
+                    <form
+                        action="http://localhost:3000/donations"
+                        method="POST">
+                        <Button text="Donate"/>
+                    </form>
+                    {/*<Button text="Donate" onClick={createPaymentSession}/>*/}
                     <InfoContainer>
                         <BarPercentage percentage={percentage}/>
                         <TotalDonations>{totalDonations}₪</TotalDonations>
@@ -81,19 +83,8 @@ const Campaigns = ({totalDonations, campaignGoal}) => {
                     <AboutStyled>Recent Donations</AboutStyled>
                 </AboutAndDonationContainer>
             </DescriptionContainer>
-            {sessionId && (
-                <StripeCheckout
-                    stripeKey="YOUR_PUBLISHABLE_KEY"
-                    token={handlePaymentSuccess}
-                    amount={amount * 100} // Convert to cents
-                    currency="USD"
-                    email="user@example.com"
-                    description="Sample Payment"
-                    onClose={handlePaymentError}
-                />
-            )}
-        </CampaignsStyled>
+        </CampaignPageStyled>
     )
 }
 
-export default Campaigns;
+export default CampaignPage;
