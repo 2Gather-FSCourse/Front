@@ -12,11 +12,16 @@ export const CircleContainer = styled.div`
     ${props => props.right && `right: ${props.right}%;`}
     ${props => props.top && `top: ${props.top}%;`}
     ${props => props.bottom && `bottom: ${props.bottom}%;`}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 `;
-//#B5D4E6 0.21 100
-//     width: ${props => props.size}px;
-//     height: ${props => props.size}px;
-// ${props => props.left && `left: ${props.left}px;`}
-//     ${props => props.right && `right: ${props.right}px;`}
-//     ${props => props.top && `top: ${props.top}px;`}
-//     ${props => props.bottom && `bottom: ${props.bottom}px;`}
+
+export const TextContainer = styled.h3`
+    font-size: 1.6em;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+`;
