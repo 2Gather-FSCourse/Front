@@ -21,7 +21,7 @@ function Signup(props){
             <RegisterForm formMod={formMod} message={message} setMessage={setMessage} setIsError={setIsError}/>
         </LoginContainer>
                 {/*<Button onClick={googleAuth} text={'Sign Up with Google'} isEmpty={true}></Button>*/}
-                <StyledLink to="/login">Already signed?</StyledLink>
+            { formMod === "create" ? <StyledLink to="/login">Already signed?</StyledLink> : null }
         </PageContainer>
     );
 }

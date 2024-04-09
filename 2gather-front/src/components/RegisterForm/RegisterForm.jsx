@@ -155,15 +155,16 @@ const RegisterForm = (props) => {
                                 value={formMod === "update" ? userData.email : ''}
                                 onChange={(e) => handleForm(e)}
                             />
+                        { formMod === "create" ? (
                             <TextInput
                                 id={"password"}
                                 label="Password"
                                 type={"password"}
                                 multiline
                                 width={"100%"}
-                                value={formMod === "update" ? userData.password : ''}
                                 onChange={(e) => handleForm(e)}
                             />
+                        ) : null}
                             <StyledSelect
                                 id={"userType"}
                                 label="Type"
@@ -203,7 +204,7 @@ const RegisterForm = (props) => {
                             </StyledSelect>
                             ) : null}
                     </ColumnContainer>
-                    <Button text={"Sign Up"} onClick={(e) =>{ formMod === "create" ? Register(e,userData) : Update(e,userData)}} isEmpty={true}/>
+                    <Button text={formMod === "create" ? "Sign Up" : "Update"} onClick={(e) =>{ formMod === "create" ? Register(e,userData) : Update(e,userData)}} isEmpty={true}/>
                 </FormStyle>
             {/*}*/}
         </FormContainer>
