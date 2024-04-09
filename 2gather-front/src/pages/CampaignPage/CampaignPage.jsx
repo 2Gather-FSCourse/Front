@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import Button from '../../components/Button/Button';
 import BarPercentage from '../../components/BarPrecentage/BarPercentage';
 import campaignImg from '../../assets/campaignImages/breastCancerAwareness.jpg';
-import {createDonation} from '../../APIs/donations.api';
-import {loadStripe} from "@stripe/stripe-js";
-
+import Button from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 import {
     AboutAndDonationContainer,
     AboutStyled,
@@ -20,68 +18,47 @@ import {
     TotalDonations,
 } from './CampaignPage.styled.js';
 
-const CampaignPage = ({user, campaignId, totalDonations, campaignGoal}) => {
+const baseURL = "http://localhost:3000";
+
+
+const CampaignPage = ({ user, totalDonations, campaignGoal }) => {
     const [percentage, setPercentage] = useState(0);
-    const [stripePromise, setStripePromise] = useState(null);
-    const [clientSecret, setClientSecret] = useState("");
+    // const [campaignId, setCampaignId] = useState("");
 
     useEffect(() => {
         setPercentage((totalDonations / campaignGoal) * 100);
     }, [totalDonations, campaignGoal]);
 
+    // useEffect(() => {
+    //     const url = window.location.href;
+    //     const campaignId = url.split("=")[1];
+    //     setCampaignId(campaignId);
+    // }, []);
 
-    useEffect(() => {
-        fetch("/config").then(async (r) => {
-            const { publishableKey } = await r.json();
-            setStripePromise(loadStripe(publishableKey));
-        });
-    }, []);
-
-    useEffect(() => {
-        fetch("/create-payment-intent", {
-            method: "POST",
-            body: JSON.stringify({}),
-        }).then(async (result) => {
-            var { clientSecret } = await result.json();
-            setClientSecret(clientSecret);
-        });
-    }, []);
+    // const navigate = useNavigate();
+    // const navigatorToPayment = () => {
+    //     navigate(`donate/campaignId=${campaignId}`);
+    // };
 
 
+    const navigate = useNavigate();
 
-    const createPaymentSession = async () => {
-        try {
-            const stripe = await loadStripe('pk_test_51OyuRrDgt4I0wPiKSSAIhkKNlskhOycoKtuVcr5yOJMv7KcXjiJ1YV7GLT3ye90QAvxWQljx2VCmcwRFICo5KHWS00ibevbvte');
-            const response = await createDonation();
-            console.log('37');
-            const result = await stripe.redirectToCheckout({
-                sessionId: response.data.sessionId
-            });
-
-            if(result.error){
-                console.log(result.error);
-            }
-
-        } catch (error) {
-            console.error('Error creating payment session:', error);
-        }
+    const navigateToDonate = () => {
+        navigate('/donate'); // Use relative path to navigate to /donate
     };
 
 
     return (
         <CampaignPageStyled>
             <ContainerStyled>
-                <ImgStyled src={campaignImg} alt="Campaign Image"/>
+                <ImgStyled src={campaignImg} alt="Campaign Image" />
                 <CampaignInfoContainer>
-                    <PageTitle title="Women Cancer Awareness"/>
-                    <form
-                        action="http://localhost:3000/donations"
-                        method="POST">
-                        <Button text="Donate"/>
-                    </form>
-                    {/*<Button text="Donate" onClick={createPaymentSession}/>*/}
+                    <PageTitle title="Women Cancer Awareness" />
+                    {user && (
+                        <Button text={'Donate 50₪'} onClick={navigateToDonate} />
+                    )}
                     <InfoContainer>
-                        <BarPercentage percentage={percentage}/>
+                        <BarPercentage percentage={percentage} />
                         <TotalDonations>{totalDonations}₪</TotalDonations>
                         <GoalDonationStyle>Pledged of {campaignGoal}₪ goal</GoalDonationStyle>
                         <span>Campaign complete</span>

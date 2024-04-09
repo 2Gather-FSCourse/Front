@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import {json, Navigate, Route, Routes} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { json, Navigate, Route, Routes } from 'react-router-dom'
 import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Signup from "./pages/Signup/Signup.jsx";
@@ -9,8 +9,8 @@ import BreadCrumbs from "./components/BreadCrumbs/BreadCrumbs.jsx";
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import CampaignPage from './pages/CampaignPage/CampaignPage.jsx';
 import Profile from './pages/Profile/Profile';
-import Donations from './pages/Donations/Donations';
-import {Msg} from "./components/Msg/Msg";
+import { Msg } from "./components/Msg/Msg";
+import Payment from "./pages/Payment/Payment";
 
 
 const App = () => {
@@ -21,20 +21,23 @@ const App = () => {
 
     return (
         <div className="App">
-            <Header/>
-            {message && <Msg msg={message} isError={isError}/>}
+            <Header />
+            {message && <Msg msg={message} isError={isError} />}
             <Routes>
-                <Route path="/appreciationWall" element={<AppreciationWall/>}/>
-                <Route path="/campaigns/id" element={<CampaignPage user={user} campaignId={'6613e9b67398036000e77ac0'} totalDonations={1594} campaignGoal={6900}/>}/>
-                <Route path="/profile" element={<Profile/>}/>
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
+                <Route path="/profile" element={<Profile/>}/>
+                <Route path="/appreciationWall" element={<AppreciationWall/>}/>
+                <Route path="/campaigns/id" element={<CampaignPage user={user} campaignId={'6613e9b67398036000e77ac0'} totalDonations={1594} campaignGoal={6900}/>}/>
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
                 <Route exact path="/donations" element={<Donations/>}/>
+                <Route path="/profile" element={<Profile />} />
+                <Route path='/donate' element={user ? <Payment user={user} /> : <Navigate to="/login" />} />
+                <Route exact path="/login" element={user ? <Navigate to="/" /> : <Login message={message} setMessage={setMessage} setIsError={setIsError} />} />
                 <Route exact path="/signup" element={user ?
-                    <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"update"}/> :
+                    <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"update"} /> :
                     <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"create"} />
-                }/>
+                } />
             </Routes>
         </div>
     );
