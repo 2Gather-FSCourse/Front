@@ -1,21 +1,22 @@
-import {useLocation} from "react-router-dom";
-export default function BreadCrumbs() {
-    const location = useLocation();
-    const pathNames = location.pathname.split("/").filter((x) => x);
+import {
+    Breadcrumbs as MUIBreadcrumbs,
+    Link,
+    Typography
+} from '@mui/material';
+
+
+const Breadcrumbs = props => {
+    const {path} = props;
     return (
-        <div>
-            {pathNames.map((name, index) => {
-                const routeTo = `/${pathNames.slice(0, index + 1).join("/")}`;
-                const isLast = index === pathNames.length - 1;
-                return isLast ? (
-                    <span key={name}>{name}</span>
-                ) : (
-                    <span key={name}>
-                        <a href={routeTo}>{name}</a>
-                        {" | "}
-                    </span>
-                );
-            })}
-        </div>
+        <MUIBreadcrumbs aria-label="breadcrumb">
+            <Link color="inherit" href="/">
+                Home
+            </Link>
+            <Link color="inherit" href="/campaigns">
+                Campaigns
+            </Link>
+            <Typography color="textPrimary">Campaign List</Typography>
+        </MUIBreadcrumbs>
     );
-}
+};
+

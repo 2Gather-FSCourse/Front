@@ -5,13 +5,15 @@ import Login from "./pages/Login/Login.jsx";
 import Signup from "./pages/Signup/Signup.jsx";
 import './App.css'
 import Header from './components/Header/Header';
-import BreadCrumbs from "./components/BreadCrumbs/BreadCrumbs.jsx";
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import CampaignPage from './pages/CampaignPage/CampaignPage.jsx';
 import Profile from './pages/Profile/Profile';
-import { Msg } from "./components/Msg/Msg";
 import Payment from "./pages/Payment/Payment";
 import PaymentReult from "./pages/PaymentResult/PaymentResult";
+import {Msg} from "./components/Msg/Msg";
+import CampaignForm from "./pages/Campaigns/CampignForm/CampaignForm.jsx";
+import {CampaignList} from "./pages/Campaigns/CampaignsList/CampaignList.jsx";
+
 
 const App = () => {
     // const [user, setUser] = useState(null);

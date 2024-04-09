@@ -32,6 +32,7 @@ const LoginForm = (props) => {
         }
         try{
             const res = await LoginUser(LoginInfo);
+            console.log(res.data);
             if (res) {
                 localStorage.setItem('user', JSON.stringify(res.data));
                 setMessage("Logged in Successfully");
