@@ -38,7 +38,7 @@ const CheckoutForm = ({ user, campaignId }) => {
         const result = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: `${window.location.origin}/campaigns/id`,
+                return_url: `${window.location.origin}/paymentResult`,
             },
         });
 
