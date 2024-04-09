@@ -93,7 +93,7 @@ const CampaignForm = () => {
                 </div>
                 <div>
                     <label>Enter Campaign Image</label>
-                    <input type="file" name="campaignImage" onChange={handleChange}/>
+                    <input type="file" name="campaignImage" onChange={handleChange} required/>
                 </div>
 
 

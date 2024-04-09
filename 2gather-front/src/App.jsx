@@ -32,6 +32,8 @@ const App = () => {
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
                 <Route path="/campaigns/id" element={<CampaignPage user={user} campaignId={'6613e9b67398036000e77ac0'} totalDonations={1594} campaignGoal={6900}/>}/>
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
+                <Route path="/campaigns/form" element={<CampaignForm/>}/>
+                <Route path="/campaigns" element={<CampaignList/>}/>
                 {/* <Route exact path="/donations" element={<Donations/>}/> */}
                 <Route path="/profile" element={<Profile />} />
                 <Route path='/donate' element={user ? <Payment user={user} /> : <Navigate to="/login" />} />
