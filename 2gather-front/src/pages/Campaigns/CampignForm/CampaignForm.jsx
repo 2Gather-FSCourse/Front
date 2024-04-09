@@ -3,7 +3,12 @@ import {createCampaigns} from '../../../APIs/campaigns.api.jsx';
 import {uploadCampaignImage} from "../../../APIs/cloudinary.api.jsx";
 import axios from "axios";
 import {GetOrganizationById} from "../../../APIs/organizations.api.jsx";
-
+import {CampaignsContainer,CampaignFormContainer, InputsContainer} from './CampaignForm.styled.js'
+import PageTitle from '../../../components/PageTitle/PageTitle.jsx';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 const CampaignForm = () => {
     const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
@@ -44,26 +49,26 @@ const CampaignForm = () => {
 
 
     return (
-        <div>
-            <h2>Create Campaign</h2>
-            <form>
-                <div>
+        <CampaignsContainer>
+            <PageTitle title={'Create Campaign'}></PageTitle>
+            <CampaignFormContainer>
+                <InputsContainer>
                     <label>Enter Campaign Name</label>
                     <input type="text" name="title" onChange={handleChange} required/>
-                </div>
-                <div>
+                </InputsContainer>
+                <InputsContainer>
                     <label>Enter Campaign Description</label>
                     <textarea name="campaignDesc" onChange={handleChange} required></textarea>
-                </div>
-                <div>
+                </InputsContainer>
+                <InputsContainer>
                     <label>Enter Campaign Type</label>
                     <select name="campaignType" onChange={handleChange} required>
                         <option value="">Select Campaign Type</option>
                         <option value="fundraising">Fundraising</option>
                         <option value="donation">Donation</option>
                     </select>
-                </div>
-                <div>
+                </InputsContainer>
+                <InputsContainer>
                     <label>Enter Campaign Category</label>
                     <select name="campaignCategory" onChange={handleChange} required>
                         <option value="">Select Campaign Category</option>
@@ -78,28 +83,28 @@ const CampaignForm = () => {
                         <option value="toolsAndEquipment">Tools and Equipment</option>
                         <option value="petSupplies">Pet Supplies</option>
                     </select>
-                </div>
-                <div>
+                </InputsContainer>
+                <InputsContainer>
                     <label>Enter Campaign Goal</label>
                     <input type="number" name="goal" onChange={handleChange} required/>
-                </div>
-                <div>
+                </InputsContainer>
+                <InputsContainer>
                     <label>Enter Start Date</label>
                     <input type="date" name="startDate" onChange={handleChange} required/>
-                </div>
-                <div>
+                </InputsContainer>
+                <InputsContainer>
                     <label>Enter End Date</label>
                     <input type="date" name="endDate" onChange={handleChange} required/>
-                </div>
-                <div>
+                </InputsContainer>
+                <InputsContainer>
                     <label>Enter Campaign Image</label>
                     <input type="file" name="campaignImage" onChange={handleChange} required/>
-                </div>
+                </InputsContainer>
 
 
                 <button type="submit" onClick={handleSubmit}>Create Campaign</button>
-            </form>
-        </div>
+            </CampaignFormContainer>
+        </CampaignsContainer>
     );
 };
 
