@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { useEffect, userEffect } from 'react';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import {AppreciationWallContainer, CirclesContainer} from './AppreciationWall.style';
+import { AppreciationWallContainer, CirclesContainer } from './AppreciationWall.style';
 import Circle from '../../components/Circle/Circle';
+import { getDonations } from '../../APIs/donations.api';
+import { getUser } from '../../APIs/users.api';
 
 const AppreciationWall = () => {
+    const [topFive, setTopFive] = useState([]);
+
+    useEffect(() => {
+        async function fetchTopFive() {
+            const result = await getDonations();
+            let users = {};
+
+            for (const donation of result) {
+                if (!users[donation.userId]) {
+                    users[donation.userId] = 0;
+                }
+                users[donation.userId] += donation.amount;
+            }
+
+            let usersArray = [];
+            for (const userId in users) {
+                usersArray.push({ userId, totalDonation: users[userId] });
+            }
+
+            usersArray.sort((a, b) => b.totalDonation - a.totalDonation);
+            const topFiveId = usersArray.slice(0, 5).map(user => user.userId);
+
+            for (const userId of topFiveId) {
+                const user = await getUser(userId);
+                topFive.push(user);
+            }
+
+            setTopFive(topFive);
+        }
+
+        fetchTopFive();
+    }, []);
+
+
     return (
         <AppreciationWallContainer>
-            <PageTitle title="Donor Appreciation Wall"/>
+            <PageTitle title="Donor Appreciation Wall" />
             <CirclesContainer>
                 <Circle color={'#B5D4E6'} height={4.4} width={3.1} opacity={0.2} bottom={2}></Circle>
                 <Circle color={'#B5D4E6'} height={5.1} width={3.6} opacity={0.65} top={4.8} right={3.4}></Circle>
