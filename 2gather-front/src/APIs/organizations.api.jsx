@@ -2,10 +2,10 @@ import axios from 'axios'
 
 axios.defaults.withCredentials = true;
 
-const baseUrl = "https://publicinformationportal.onrender.com/";
+const baseUrl = "https://publicinformationportal.onrender.com";
 
 export const GetAllOrganizations = async () => {
-    const res = await axios.get(baseUrl + "Organizations", {withCredentials: true})
+    const res = await axios.get(baseUrl + "/Organizations", {withCredentials: true})
     return res.data;
 };
 

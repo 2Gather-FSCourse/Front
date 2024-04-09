@@ -96,7 +96,9 @@ const RegisterForm = (props) => {
         const res = await updateUser(user.id, updatedInfo);
         console.log(res);
         if (res) {
+
             setMessage("User Updated Successfully");
+            localStorage.setItem('user', JSON.stringify(res));
             setTimeout(() => { setMessage('') }, 5000);
             setIsSuccess(true);
             navigate('/');
