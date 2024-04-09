@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const api = axios.create({baseURL: "https://localhost:3000",});
+const baseURL = "http://localhost:3000";
 
-const getPublicKey = async () => {
-    return await api.get("/campaigns/");
+export const getPaymentIntent = async () => {
+    const result = await axios.post(`${baseURL}/stripe`);
+    return result.data;
 };

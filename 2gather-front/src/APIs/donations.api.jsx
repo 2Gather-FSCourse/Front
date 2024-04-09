@@ -2,9 +2,9 @@ import axios from "axios";
 
 const baseURL = "http://localhost:3000";
 
-const createDonation = async () => {
-    return await axios.post(`${baseURL}/stripe`);
-
+const createDonation = async (body) => {
+    const result = await axios.post(`${baseURL}/donations`, body);
+    return result.data;
 };
 
 export {createDonation};
