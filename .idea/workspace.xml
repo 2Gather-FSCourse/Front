@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="added basic form for campaign, need to get org, user anf select options">
+    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="first homepage layout done, &#10;added styled components to home page &#10;need to check if it's the best way to use it">
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/CheckoutForm/CheckoutForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/.env" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/cloudinary.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/cloudinary.api.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/CampignForm/CampaignForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/CampignForm/CampaignForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Login/LoginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Login/LoginForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/stripe.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/stripe.api.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/CampaignPage/CampaignPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/CampaignPage/CampaignPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +19,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSX File" />
         <option value="JavaScript File" />
         <option value="JSX File" />
       </list>
@@ -55,20 +52,16 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;rony-trying-her-best&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.20&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;adi-on-edge&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/Adi/Degree/Third Year/Semester A/FullStack/2Gather/Front&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\IntelliJ IDEA 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -96,9 +89,16 @@
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -117,8 +117,17 @@
       <workItem from="1712510507798" duration="688000" />
       <workItem from="1712511640588" duration="2909000" />
       <workItem from="1712515589709" duration="2770000" />
-      <workItem from="1712571561323" duration="6413000" />
-      <workItem from="1712586874875" duration="27350000" />
+      <workItem from="1712605244950" duration="2295000" />
+      <workItem from="1712607817908" duration="4845000" />
+      <workItem from="1712615438607" duration="4427000" />
+      <workItem from="1712653678648" duration="523000" />
+      <workItem from="1712654368240" duration="1593000" />
+      <workItem from="1712656344722" duration="35000" />
+      <workItem from="1712656829181" duration="837000" />
+      <workItem from="1712666569902" duration="395000" />
+      <workItem from="1712667443469" duration="813000" />
+      <workItem from="1712668431630" duration="2540000" />
+      <workItem from="1712671155176" duration="84000" />
     </task>
     <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
       <option name="closed" value="true" />
@@ -128,31 +137,7 @@
       <option name="project" value="LOCAL" />
       <updated>1711651326062</updated>
     </task>
-    <task id="LOCAL-00002" summary="added routing from main page to other pages">
-      <option name="closed" value="true" />
-      <created>1712578248705</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1712578248705</updated>
-    </task>
-    <task id="LOCAL-00003" summary="cahnged image control, adding cloudinary">
-      <option name="closed" value="true" />
-      <created>1712578321868</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1712578321868</updated>
-    </task>
-    <task id="LOCAL-00004" summary="added basic form for campaign, need to get org, user anf select options">
-      <option name="closed" value="true" />
-      <created>1712625795786</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1712625795786</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,20 +157,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="starting to work on campaigns list &#10;added api requests" />
     <MESSAGE value="first homepage layout done, &#10;added styled components to home page &#10;need to check if it's the best way to use it" />
-    <MESSAGE value="added basic form for campaign, need to get org, user anf select options" />
-    <option name="LAST_COMMIT_MESSAGE" value="added basic form for campaign, need to get org, user anf select options" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/2gather-front/src/App.jsx</url>
-          <line>25</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="first homepage layout done, &#10;added styled components to home page &#10;need to check if it's the best way to use it" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

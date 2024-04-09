@@ -8,4 +8,6 @@ export const MsgDiv = styled.div`
     background-color: ${({ isError }) => (isError === "true" ? '#f8d7da' : '#d1e7dd')};
     margin-top: 2%;
     padding: 8px 15px;
+    justify-content: center;
+    width: 100%;
     border-radius: 5px;`;

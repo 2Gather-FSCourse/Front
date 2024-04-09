@@ -1,12 +1,12 @@
-import axios from 'axios';
-
-const api = axios.create({
-  baseURL: 'http://localhost:3000',
-});
+import axios from "axios";
+const api = axios.create({baseURL: "http://localhost:3000",});
 
 const createCampaigns = async (campaign) => {
-  console.log(campaign);
   return api.post('/campaigns/', campaign);
+};
+
+const fetchCampaignById = async (id) => {
+  return api.get(`/campaigns/${id}`);
 };
 
 const fetchCampaigns = async (id) => {
@@ -19,4 +19,4 @@ const updateCampaign = async (id, Campaign) => {
   await api.put(`/damage-reports/${id}`, Campaign);
 };
 
-export { createCampaigns, fetchCampaigns, updateCampaign };
+export { createCampaigns, fetchCampaigns, updateCampaign, fetchCampaignById };

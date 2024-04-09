@@ -27,6 +27,7 @@ const Profile = () => {
 
 const [organization, setOrganization] = useState([]);
 const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const name = user ? user.name || 'Anonymous Donor'  : 'Guest';
 useEffect(() => {
     if(user.userType === 'Organization'){
         GetOrganizationById(user.orgId)
@@ -44,7 +45,7 @@ useEffect(() => {
         <ProfileContainer>
             <UpperProfileContainer>
                 <ProfileImage src={user.img}></ProfileImage>
-                <ProfileName>{user.name}</ProfileName>
+                <ProfileName>{name}</ProfileName>
                 { user.userType === 'Organization' ?  <OrganizationName>{organization.title}</OrganizationName> : null }
             </UpperProfileContainer>
             <LineStyle>
@@ -67,7 +68,9 @@ useEffect(() => {
                     </CircleContainer>
                     <ContainerTitle>Donations</ContainerTitle>
                     <ContainerDesc>Track your donation history and manage contributions</ContainerDesc>
+                    <Link to={"/donations"}>
                     <Button text={'View'}></Button>
+                    </Link>
                 </CardContainer>
                 <CardContainer>
                     <CircleContainer>
@@ -75,13 +78,7 @@ useEffect(() => {
                     </CircleContainer>
                     <ContainerTitle>Personal Information</ContainerTitle>
                     <ContainerDesc>Update and maintain your personal profile details</ContainerDesc>
-                    <Link to={
-                        // {
-                            // pathname:
-                            "/signup"
-                            // state: {formMod: "update"}
-                        // }}
-                    }>
+                    <Link to={"/signup"}>
                         <Button text={'Edit'}></Button>
                     </Link>
                 </CardContainer>
