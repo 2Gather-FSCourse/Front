@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000";
+const baseURL = "https://server-2gwk.onrender.com";
 
 const createDonation = async (body) => {
     const result = await axios.post(`${baseURL}/donations`, body);

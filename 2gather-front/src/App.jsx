@@ -9,6 +9,7 @@ import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import CampaignPage from './pages/CampaignPage/CampaignPage.jsx';
 import Profile from './pages/Profile/Profile';
 import Payment from "./pages/Payment/Payment";
+import PaymentReult from "./pages/PaymentResult/PaymentResult";
 import {Msg} from "./components/Msg/Msg";
 import CampaignForm from "./pages/Campaigns/CampignForm/CampaignForm.jsx";
 import {CampaignList} from "./pages/Campaigns/CampaignsList/CampaignList.jsx";
@@ -29,15 +30,13 @@ const App = () => {
                 <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
-                <Route path="/campaigns/id" element={<CampaignPage totalDonations={1594} campaignGoal={6900}/>}/>
-                <Route path="/campaigns" element={<CampaignList/>}/>
-                <Route path="/profile" element={<Profile/>}/>
-                <Route path="/campaigns/form" element={ !user ?  <Login message={message} setMessage={setMessage} setIsError={setIsError}/> :  <CampaignForm/> }/>
-                <Route exact path="/" element={<Home/>}/>
-                <Route path='/donate' element={user ? <Payment user={user} /> : <Navigate to="/login" />} />
-                <Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>
+                <Route path="/campaigns/id" element={<CampaignPage user={user} campaignId={'6613e9b67398036000e77ac0'} totalDonations={1594} campaignGoal={6900}/>}/>
                 <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login message={message} setMessage={setMessage} setIsError={setIsError}/>}/>
-
+                {/* <Route exact path="/donations" element={<Donations/>}/> */}
+                <Route path="/profile" element={<Profile />} />
+                <Route path='/donate' element={user ? <Payment user={user} /> : <Navigate to="/login" />} />
+                <Route path='/paymentResult' element={user ? <PaymentReult user={user} /> : <Navigate to="/login" />} />
+                <Route exact path="/login" element={user ? <Navigate to="/" /> : <Login message={message} setMessage={setMessage} setIsError={setIsError} />} />
                 <Route exact path="/signup" element={user ?
                     <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"update"} /> :
                     <Signup message={message} setMessage={setMessage} setIsError={setIsError} formMod={"create"} />
