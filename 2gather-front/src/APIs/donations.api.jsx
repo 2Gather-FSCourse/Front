@@ -8,8 +8,12 @@ const createDonation = async (body) => {
 };
 
 const getDonationByUserId = async (userId) => {
-    return await axios.get(`${baseURL}/donations/list/${userId}` );
-
+    return await axios.get(`${baseURL}/donations/list/${userId}`);
 };
 
-export {createDonation, getDonationByUserId};
+
+const getDonations = async (userId) => {
+    return await axios.get(`${baseURL}/donations/`);
+};
+
+export { createDonation, getDonationByUserId, getDonations };

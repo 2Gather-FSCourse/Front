@@ -13,10 +13,3 @@ export const CircleContainer = styled.div`
     ${props => props.top && `top: ${props.top}%;`}
     ${props => props.bottom && `bottom: ${props.bottom}%;`}
 `;
-//#B5D4E6 0.21 100
-//     width: ${props => props.size}px;
-//     height: ${props => props.size}px;
-// ${props => props.left && `left: ${props.left}px;`}
-//     ${props => props.right && `right: ${props.right}px;`}
-//     ${props => props.top && `top: ${props.top}px;`}
-//     ${props => props.bottom && `bottom: ${props.bottom}px;`}
