@@ -12,6 +12,7 @@ import { Msg } from "./components/Msg/Msg";
 import Payment from "./pages/Payment/Payment";
 import {Msg} from "./components/Msg/Msg";
 import CampaignForm from "./pages/Campaigns/CampignForm/CampaignForm.jsx";
+import {CampaignList} from "./pages/Campaigns/CampaignsList/CampaignList.jsx";
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
                 <Route path="/campaigns/id" element={<CampaignPage totalDonations={1594} campaignGoal={6900}/>}/>
+                <Route path="/campaigns" element={<CampaignList/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/campaigns/form" element={ !user ?  <Login message={message} setMessage={setMessage} setIsError={setIsError}/> :  <CampaignForm/> }/>
                 <Route exact path="/" element={<Home/>}/>
