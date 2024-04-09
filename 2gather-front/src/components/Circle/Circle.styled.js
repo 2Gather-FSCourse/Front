@@ -19,7 +19,7 @@ export const CircleContainer = styled.div`
 `;
 
 export const TextContainer = styled.h3`
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 500;
     color: #FFFFFF;
     text-align: center;
