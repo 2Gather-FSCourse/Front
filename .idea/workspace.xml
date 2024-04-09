@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="added campaign list start">
+    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="rony IS TRYING TO FIX MERGE MISTAKES">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Campaign/Campaign.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Campaign/Campaign.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Campaign/Campign.styled.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Campaign/Campign.styled.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/CampaignsContainer/CampaignContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/CampaignsContainer/CampaignContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/CampaignsContainer/CampaignContainer.styled.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/CampaignsContainer/CampaignContainer.styled.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/SearchBar/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/SearchBar/SearchBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/SearchBar/SearchBar.styled.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/SearchBar/SearchBar.styled.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/TextInput/TextInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/TextInput/TextInput.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +58,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Adi/Degree/Third Year/Semester A/FullStack/2Gather/Front&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ronyzrihen/Documents/shenkar/Third_year/intellij/assignments/2gether/fsFinal_2gether_front&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -89,14 +97,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -125,6 +125,7 @@
       <workItem from="1712667443469" duration="813000" />
       <workItem from="1712668431630" duration="2540000" />
       <workItem from="1712671155176" duration="84000" />
+      <workItem from="1712683974723" duration="9875000" />
     </task>
     <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
       <option name="closed" value="true" />
@@ -142,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712682903366</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="rony IS TRYING TO FIX MERGE MISTAKES">
+      <option name="closed" value="true" />
+      <created>1712684965067</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712684965067</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +172,8 @@
     <MESSAGE value="starting to work on campaigns list &#10;added api requests" />
     <MESSAGE value="first homepage layout done, &#10;added styled components to home page &#10;need to check if it's the best way to use it" />
     <MESSAGE value="added campaign list start" />
-    <option name="LAST_COMMIT_MESSAGE" value="added campaign list start" />
+    <MESSAGE value="rony IS TRYING TO FIX MERGE MISTAKES" />
+    <option name="LAST_COMMIT_MESSAGE" value="rony IS TRYING TO FIX MERGE MISTAKES" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

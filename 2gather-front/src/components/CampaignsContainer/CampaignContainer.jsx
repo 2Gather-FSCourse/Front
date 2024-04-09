@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { searchCampaigns} from '../../APIs/campaigns.api.jsx';
-// import {CampaignListWrapperStyled} from "../../pages/Campaigns/CampaignsList/CampagnList.styled.jsx";
+import Camapign from "../Campaign/Campaign.jsx";
+import {CampaignContainerWrapperStyled} from "./CampaignContainer.styled.jsx";
+ const CampaignContainer = ({search, refresh, setRefresh}) => {
 
- const CampaignContainer = (props) => {
-    const {search, refresh, setRefresh}  = props;
     const [loading, setLoading] = useState(true);
     const [campaigns, setCampaigns] = useState([]);
     const [message, setMessage] = useState(null);
@@ -40,18 +40,14 @@ console.log("CampaignContainer");
 console.log(campaigns);
     return (
         <div>
-            <h2>Campaigns</h2>
-            <div>
+            <CampaignContainerWrapperStyled>
                 {campaigns.map((campaign) => (
-                    <div key={campaign._id}>
-                        <h3>{campaign.name}</h3>
-                        <p>{campaign.description}</p>
-                        <p>{campaign.startDate}</p>
-                        <p>{campaign.endDate}</p>
-                        <p>{campaign.goal}</p>
-                    </div>
+                    <Camapign
+                    key={campaign._id}
+                    campaign={campaign}
+                    ></Camapign>
                 ))}
-            </div>
+            </CampaignContainerWrapperStyled>
 
         </div>
     );
