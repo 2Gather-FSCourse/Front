@@ -46,7 +46,7 @@ const LoginForm = (props) => {
             }
         } catch (err){
             console.log(err);
-            setMessage(err);
+            setMessage("Wrong Credentials");
             setIsSuccess(false);
             setIsError(true);
             setTimeout(() => { setMessage('') }, 5000);
