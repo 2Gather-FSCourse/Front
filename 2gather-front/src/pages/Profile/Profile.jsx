@@ -27,6 +27,7 @@ const Profile = () => {
 
 const [organization, setOrganization] = useState([]);
 const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const name = user ? user.name || 'Anonymous Donor'  : 'Guest';
 useEffect(() => {
     if(user.userType === 'Organization'){
         GetOrganizationById(user.orgId)
@@ -44,7 +45,7 @@ useEffect(() => {
         <ProfileContainer>
             <UpperProfileContainer>
                 <ProfileImage src={user.img}></ProfileImage>
-                <ProfileName>{user.name}</ProfileName>
+                <ProfileName>{name}</ProfileName>
                 { user.userType === 'Organization' ?  <OrganizationName>{organization.title}</OrganizationName> : null }
             </UpperProfileContainer>
             <LineStyle>

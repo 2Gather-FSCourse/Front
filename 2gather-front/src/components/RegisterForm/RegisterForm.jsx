@@ -117,7 +117,6 @@ const RegisterForm = (props) => {
             {isSuccess && message && <Msg message={message}/>}
             {formMod === "create" && <LoginHeading>Create Account</LoginHeading>}
             {formMod === "update" && <LoginHeading>Update Account</LoginHeading>}
-            {/*{!isSuccess &&*/}
                 <FormStyle onSubmit={(e) => {formMod ==="create" ? Register(e, userData) : Update(e,userData) }}>
                     <ColumnContainer>
                         <TextInput
@@ -126,7 +125,6 @@ const RegisterForm = (props) => {
                             type={"text"}
                             multiline
                             width={"100%"}
-                            // value={formMod === "update" ? userData.name : ''}
                             value={userData.name}
                             onChange={(e) => handleForm(e)}
                         />
@@ -138,7 +136,6 @@ const RegisterForm = (props) => {
                                 label="Age"
                                 multiline
                                 width={"100%"}
-                                // value={formMod === "update" ? userData.age : ''}
                                 value={userData.age}
                                 onChange={(e) => handleForm(e)}
                             />
@@ -148,7 +145,6 @@ const RegisterForm = (props) => {
                                 type={"tel"}
                                 multiline
                                 width={"100%"}
-                                // value={formMod === "update" ? userData.phone : ''}
                                 value={userData.phone}
                                 onChange={(e) => handleForm(e)}
                             />
@@ -158,7 +154,6 @@ const RegisterForm = (props) => {
                                 multiline
                                 type={"email"}
                                 width={"100%"}
-                                // value={formMod === "update" ? userData.email : ''}
                                 value={userData.email}
                                 onChange={(e) => handleForm(e)}
                             />
@@ -194,7 +189,6 @@ const RegisterForm = (props) => {
                             <StyledSelect
                                 id={"orgId"}
                                 label="Organization"
-                                // value={formMod === "update" ? userData.orgId : ''}
                                 value={userData.orgId}
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
@@ -212,7 +206,6 @@ const RegisterForm = (props) => {
                     </ColumnContainer>
                     <Button text={formMod === "create" ? "Sign Up" : "Update"} onClick={(e) =>{ formMod === "create" ? Register(e,userData) : Update(e,userData)}} isEmpty={true}/>
                 </FormStyle>
-            {/*}*/}
         </FormContainer>
     )
 
