@@ -7,7 +7,7 @@ import { Msg } from "../../components/Msg/Msg";
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = (props) => {
-    const {setUser , message, setMessage , setIsError}= props;
+    const { message, setMessage , setIsError}= props;
     const [userData, setUserData] = React.useState({userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
     const navigate = useNavigate();
@@ -34,7 +34,6 @@ const LoginForm = (props) => {
             const res = await LoginUser(LoginInfo);
             if (res) {
                 localStorage.setItem('user', JSON.stringify(res.data));
-                setUser(JSON.parse(localStorage.getItem('user')));
                 setMessage("Logged in Successfully");
                 setIsSuccess(true);
                 setTimeout(() => { setMessage('') }, 5000);

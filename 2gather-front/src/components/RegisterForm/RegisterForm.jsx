@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import {ColumnContainer, FormStyle, StyledSelect, FormContainer, StyledMenuItem} from './RegisterForm.style';
-import { createUser } from '../../APIs/users.api.jsx';
+import { LoginHeading } from '../../pages/Login/Login.style';
+import { createUser, updateUser } from '../../APIs/users.api.jsx';
 import { Button } from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 import {Msg} from "../Msg/Msg";
 import {useNavigate} from "react-router-dom";
+import { GetAllOrganizations } from '../../APIs/organizations.api';
 
 
 const RegisterForm = (props) => {
     const { formMod, message, setMessage, setIsError } = props
-    const [userData, setUserData] = React.useState({userType: 'Donor',});
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const [userData, setUserData] = React.useState(user ||{ userType: 'Donor',});
     const [isSuccess, setIsSuccess] = React.useState(false);
+    const [organizations, setOrganizations] = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        GetAllOrganizations()
+            .then(data => {
+                setOrganizations(data);
+            })
+            .catch(error => {
+                console.error('Error fetching organizations:', error);
+
+            });
+    }, []);
 
 
     const handleForm = (e, child) => {
@@ -32,6 +47,7 @@ const RegisterForm = (props) => {
         e.preventDefault();
         if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
             setMessage("Please fill All the requested fields");
+            setTimeout(() => { setMessage('') }, 5000);
             return;
         }
 
@@ -42,16 +58,54 @@ const RegisterForm = (props) => {
             userType: formData.userType,
             age: formData.age,
             password: formData.password,
+            orgId: formData.orgId || null
         }
         const res = await createUser(user);
         console.log(res);
         if (res) {
             setMessage("User Registered Successfully");
+            setTimeout(() => { setMessage('') }, 5000);
             setIsSuccess(true);
             navigate('/login');
             setIsError(true);
         } else {
             setMessage("User Registration Failed");
+            setTimeout(() => { setMessage('') }, 5000);
+            setIsSuccess(false)
+            setIsError(true);
+        }
+    }
+
+    const Update = async (e, formData) => {
+        e.preventDefault();
+        if (!formData.name || !formData.phone || !formData.email || !formData.userType || !formData.age || !formData.password) {
+            setMessage("Please fill All the requested fields");
+            setTimeout(() => { setMessage('') }, 5000);
+            return;
+        }
+
+        const updatedInfo={
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            userType: formData.userType,
+            age: formData.age,
+            password: formData.password,
+            orgId: formData.orgId || null
+        }
+        const res = await updateUser(user.id, updatedInfo);
+        console.log(res);
+        if (res) {
+
+            setMessage("User Updated Successfully");
+            localStorage.setItem('user', JSON.stringify(res));
+            setTimeout(() => { setMessage('') }, 5000);
+            setIsSuccess(true);
+            navigate('/');
+            setIsError(true);
+        } else {
+            setMessage("User Update Failed");
+            setTimeout(() => { setMessage('') }, 5000);
             setIsSuccess(false)
             setIsError(true);
         }
@@ -60,10 +114,10 @@ const RegisterForm = (props) => {
     return (
         <FormContainer>
             {isSuccess && message && <Msg message={message}/>}
-            {/*{formMod === "create" && <SubTitle>Create Account</SubTitle>}*/}
-            {/*{formMod === "update" && <ReportTitle>Update Report</ReportTitle>}*/}
+            {formMod === "create" && <LoginHeading>Create Account</LoginHeading>}
+            {formMod === "update" && <LoginHeading>Update Account</LoginHeading>}
             {/*{!isSuccess &&*/}
-                <FormStyle onSubmit={(e) => Register(e, userData)}>
+                <FormStyle onSubmit={(e) => {formMod ==="create" ? Register(e, userData) : Update(e,userData) }}>
                     <ColumnContainer>
                         <TextInput
                             id={"name"}
@@ -71,14 +125,18 @@ const RegisterForm = (props) => {
                             type={"text"}
                             multiline
                             width={"100%"}
+                            value={formMod === "update" ? userData.name : ''}
                             onChange={(e) => handleForm(e)}
                         />
                             <TextInput
                                 id={"age"}
                                 type={"number"}
+                                min={18}
+                                max={100}
                                 label="Age"
                                 multiline
                                 width={"100%"}
+                                value={formMod === "update" ? userData.age : ''}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -87,6 +145,7 @@ const RegisterForm = (props) => {
                                 type={"tel"}
                                 multiline
                                 width={"100%"}
+                                value={formMod === "update" ? userData.phone : ''}
                                 onChange={(e) => handleForm(e)}
                             />
                             <TextInput
@@ -95,8 +154,10 @@ const RegisterForm = (props) => {
                                 multiline
                                 type={"email"}
                                 width={"100%"}
+                                value={formMod === "update" ? userData.email : ''}
                                 onChange={(e) => handleForm(e)}
                             />
+                        { formMod === "create" ? (
                             <TextInput
                                 id={"password"}
                                 label="Password"
@@ -105,10 +166,12 @@ const RegisterForm = (props) => {
                                 width={"100%"}
                                 onChange={(e) => handleForm(e)}
                             />
+                        ) : null}
                             <StyledSelect
                                 id={"userType"}
                                 label="Type"
-                                value={userData.userType || ''}
+                                {...(formMod == "update" ? {value: userData.userType} : {value: userData.userType || ''})}
+
                                 onChange={(e,child) => handleForm(e,child)}
                                 width={"100%"}
                             >
@@ -123,8 +186,27 @@ const RegisterForm = (props) => {
                                     width="100%"
                                 >Organization</StyledMenuItem>
                             </StyledSelect>
+                        {userData.userType === "Organization" ? (
+                            <StyledSelect
+                                id={"orgId"}
+                                label="Organization"
+                                value={formMod === "update" ? userData.orgId : ''}
+                                onChange={(e,child) => handleForm(e,child)}
+                                width={"100%"}
+                            >
+                                { organizations.map((org) => (
+                                    console.log(org),
+                                    <StyledMenuItem
+                                        key={org._id}
+                                        id={"orgId"}
+                                        value={org.org_id}
+                                        width="100%"
+                                    >{org.title}</StyledMenuItem>
+                                ))}
+                            </StyledSelect>
+                            ) : null}
                     </ColumnContainer>
-                    <Button text={"Sign Up"} onClick={(e) =>Register(e,userData)} isEmpty={true}/>
+                    <Button text={formMod === "create" ? "Sign Up" : "Update"} onClick={(e) =>{ formMod === "create" ? Register(e,userData) : Update(e,userData)}} isEmpty={true}/>
                 </FormStyle>
             {/*}*/}
         </FormContainer>
