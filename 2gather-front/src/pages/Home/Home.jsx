@@ -37,7 +37,7 @@ function Home(userDetails) {
                         <HomeCardStyled>
                             <h3>Start Campaign</h3>
                             <h1>Raise Money for Any Cause</h1>
-                            <Button text={'Start Fundraiser!'} onClick={() => navigator('/newFundraiser')} isEmpty={true}/>
+                            <Button text={'Start Fundraiser!'} onClick={() => navigator('/campaigns/form')} isEmpty={true}/>
                         </HomeCardStyled>
                         <HomeCardStyled>
                             <h3>Donations</h3>

@@ -10,28 +10,29 @@ import BreadCrumbs from "./components/BreadCrumbs/BreadCrumbs.jsx";
 import AppreciationWall from './pages/AppreciationWall/AppreciationWall';
 import Campaigns from './pages/Campaigns/Campaigns';
 import {authenticateUser} from './APIs/users.api.jsx';
+import CampaignForm from "./pages/Campaigns/CampignForm/CampaignForm.jsx";
 
 const App = () => {
-    const [user, setUser] = useState(null);
-
-
-    useEffect(() => {
-        fetchUser();
-    }, []);
-
-    const fetchUser = async () => {
-        try{
-            const res = await authenticateUser();
-            if(res.status === 200){
-                setUser(res.data.user);
-            }else{
-                setUser(null);
-                console.log(res.data.message);
-            }
-        } catch (error){
-            console.log(error);
-        }
-    }
+    // const [user, setUser] = useState(null);
+    //
+    //
+    // useEffect(() => {
+    //     fetchUser();
+    // }, []);
+    //
+    // const fetchUser = async () => {
+    //     try{
+    //         const res = await authenticateUser();
+    //         if(res.status === 200){
+    //             setUser(res.data.user);
+    //         }else{
+    //             setUser(null);
+    //             console.log(res.data.message);
+    //         }
+    //     } catch (error){
+    //         console.log(error);
+    //     }
+    // }
 
     return (
         <div className="App">
@@ -39,10 +40,11 @@ const App = () => {
             <Routes>
                 <Route path="/appreciationWall" element={<AppreciationWall/>}/>
                 <Route path="/campaigns" element={<Campaigns totalDonations={1594} campaignGoal={6900}/>}/>
+                <Route path="/campaigns/form" element={<CampaignForm/>}/>
                 <Route exact path="/" element={<Home/>}/>
                 {/*<Route exact path="/" element={user ? <Home user={user}/> : <Navigate to="/login"/>}/>*/}
-                <Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>
-                <Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup/>}/>
+                {/*<Route exact path="/login" element={user ? <Navigate to="/"/> : <Login/>}/>*/}
+                {/*<Route exact path="/signup" element={user ? <Navigate to="/"/> : <Signup/>}/>*/}
             </Routes>
         </div>
     );

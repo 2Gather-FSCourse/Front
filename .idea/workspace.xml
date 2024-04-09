@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="first homepage layout done, &#10;added styled components to home page &#10;need to check if it's the best way to use it">
-      <change afterPath="$PROJECT_DIR$/2gather-front/src/components/BreadCrumbs/BreadCrumbs 2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
+    <list default="true" id="d83c438d-6f05-491a-92aa-5c9ba6cad6f0" name="Changes" comment="cahnged image control, adding cloudinary">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/CampignForm/CampaignForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.styled.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/components/Button/Button.styled.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/.env" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/campaigns.api.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/APIs/donations.api 2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/APIs/cloudinary.api.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Campaigns/Campaigns 2.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/2gather-front/src/pages/Home/Home.styled.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -54,14 +59,18 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "rony-trying-her-best",
+    "javascript.nodejs.core.library.configured.version": "18.16.0",
+    "javascript.nodejs.core.library.typings.version": "18.16.20",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/Adi/Degree/Third Year/Semester A/FullStack/2Gather/Front",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
     "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -90,16 +99,9 @@
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -118,6 +120,8 @@
       <workItem from="1712510507798" duration="688000" />
       <workItem from="1712511640588" duration="2909000" />
       <workItem from="1712515589709" duration="2770000" />
+      <workItem from="1712571561323" duration="6413000" />
+      <workItem from="1712586874875" duration="26252000" />
     </task>
     <task id="LOCAL-00001" summary="starting to work on campaigns list &#10;added api requests">
       <option name="closed" value="true" />
@@ -127,7 +131,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711651326062</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added routing from main page to other pages">
+      <option name="closed" value="true" />
+      <created>1712578248705</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712578248705</updated>
+    </task>
+    <task id="LOCAL-00003" summary="cahnged image control, adding cloudinary">
+      <option name="closed" value="true" />
+      <created>1712578321868</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712578321868</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
